@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ article.title.upper() }} - ARTICLE
+{% endblock %}
+
+{% block articles_link %}
+<li><a class="active" href="{{ url_for('articles.show')}}">ARTICLES</a></li>
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid content text-center">
+<h1 class="b-down">{{ article.title.capitalize() }}</h1>
+<a href="{{ url_for('user.addArticleContent', username=current_user, articleName=article.title, id=article.id, endPoint='articles', path=article.title)}}">
+<button class="button">Add</button>
+</a>
+<br /><br />
+<h4 >{{ article.description }}</h4>
+<br /><br />
+</section>
+{% endblock %}

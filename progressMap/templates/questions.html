@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import calcReplies %}
+
+{% block title %}
+QUESTIONS
+{% endblock %}
+
+{% block questions_link %}
+<li class="dropdown">
+<a class="dropdown-toggle active" data-toggle="dropdown" href="#">QUESTIONS
+<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="text-center active"><a href="{{ url_for('questions.show')}}">VIEW</a></li>
+<li class="text-center"><a href="{{ url_for('questions.ask')}}">ASK</a></li>
+</ul>
+</li>
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid content">
+	<h2 class="text-center b-down">ALL QUESTIONS</h2>
+	<br />
+	{% for question in allQuestions%}
+	<section class="b-down message text-center underline">
+		<h4 class="messageCol">
+			<a href="{{ url_for('questions.view', page = question.title) }}">
+				{{ question.title.capitalize() }}
+			</a>
+		</h4>
+		<h4>
+			<a href="{{ url_for('articles.show', page = question.article.title) }}">
+				{{ question.article.title.capitalize() }}
+			</a>
+		</h4>
+		<h4>
+			<a href="{{ url_for('user.userPage', username = question.user.username) }}">
+				{{ question.user.username }}
+			</a>
+		</h4>
+		{{ calcReplies(allComments, question.id) }}
+	</section>
+	{% else %}
+		<h4 class="text-center">No questions added yet.</h4>
+	{% endfor %}
+	</section>
+</section>
+{% endblock %}

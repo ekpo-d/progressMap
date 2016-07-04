@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+	<title>{% block title %}ProgressMap{% endblock %}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel='stylesheet' href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+	<!-- nav section -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand active" href="{{ url_for('main.show', page='map') }}">
+					ProgressMap
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right nav-items text-center">
+					{% block curriculums_link %}
+  					<li><a href="{{ url_for('curriculums.show')}}">CURRICULUMS</a></li>
+					{% endblock %}
+					{% block courses_link %}
+  					<li><a href="{{ url_for('courses.show')}}">COURSES</a></li>
+					{% endblock %}
+					{% block articles_link %}
+  					<li><a href="{{ url_for('articles.show')}}">ARTICLES</a></li>
+					{% endblock %}
+					{% block questions_link %}
+					<li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">QUESTIONS
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="text-center"><a href="{{ url_for('questions.show')}}">VIEW</a></li>
+                            <li class="text-center"><a href="{{ url_for('questions.ask')}}">ASK</a></li>
+                        </ul>
+                    </li>
+					{% endblock %}
+					{% block user_link %}
+					{% if current_user.is_authenticated %}
+					<li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{current_user.username}}
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="text-center"><a href="{{ url_for('user.userPage', username=current_user.username) }}">PROGRESS</a></li>
+							<li class="text-center">
+								<a href="{{ url_for('user.addedContent', username=current_user.username)}}">CONTENT</a>
+							</li>
+                            <li class="text-center"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
+                            <li class="text-center"><a href="{{ url_for('main.show', page='signout')}}">SIGN OUT</a></li>
+                        </ul>
+                    </li>
+					{% else %}
+					<li><a href="{{ url_for('main.show', page='login') }}">LOGIN</a>
+					</li>
+					{% endif %}
+					{% endblock %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- nav end -->
+	
+	<article class="flashes text-center">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<ul>
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		{% endwith %}
+	</article>
+	
+	{% block currentProgress %}
+	{% endblock %}
+	
+	{% block overallProgress %}
+	{% endblock %}
+	<!-- content start -->
+	{% block content %}
+	<section class="container-fluid content">
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">Title</h2>
+			<h4 class="desc">
+				This is the description...
+			</h4>
+			<p class="date">Curriculum, Course</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">Title</h2>
+			<h4 class="desc">
+				This is the description...
+			</h4>
+			<p class="date">Curriculum, Course</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">Title</h2>
+			<h4 class="desc">
+				This is the description...
+			</h4>
+			<p class="date">Curriculum, Course</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">Title</h2>
+			<h4 class="desc">
+				This is the description...
+			</h4>
+			<p class="date">Curriculum, Course</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">Title</h2>
+			<h4 class="desc">
+				This is the description...
+			</h4>
+			<p class="date">Curriculum, Course</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">Title</h2>
+			<h4 class="desc">
+				This is the description...
+			</h4>
+			<p class="date">Curriculum, Course</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	</section>
+	{% endblock %}
+	<!-- content end -->
+	
+	<script src=" {{ url_for('static', filename='js/jquery-1.12.0.min.js') }}"></script>
+	<script src=" {{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+	<script src=" {{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

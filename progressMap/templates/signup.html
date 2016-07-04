@@ -1,0 +1,44 @@
+{% extends 'baseLanding.html' %}
+{% from 'form_macros.html' import render_field %}
+
+{% block flash %}
+<br />
+<article class="langingFlashes text-center">
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+	<ul>
+	{% for message in messages %}
+		<li>{{ message }}</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+{% endwith %}
+</article>
+{% endblock %}
+
+{% block desc %}
+<form action="" method="post">
+{{ form.hidden_tag() }}
+<br />
+{{ render_field(form.username, class_="form-control", placeholder="Username", required=True) }}
+<br />
+{{ render_field(form.email, class_="form-control", placeholder="Email", required=True) }}
+<br />
+{{ render_field(form.password, class_="form-control", placeholder="Password", required=True) }}
+<br />
+{{ render_field(form.confirmPassword, class_="form-control", placeholder="Confirm password", required=True) }}
+<br />
+
+{% endblock %}
+{% block signup %}
+<button class='btn' type="submit">SIGN UP</button>
+</form>
+{% endblock %}
+
+{% block loginForm %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+{% block explore %}
+{% endblock %}

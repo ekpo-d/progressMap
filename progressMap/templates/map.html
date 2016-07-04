@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}
+MAP
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid content ">
+<section class="text-center tile">
+	<a href="{{ url_for('curriculums.show')}}">
+	<article class="title">
+		<br /><br /><br /><br /><br />
+		<h2 style="margin-top: 0px;">CURRICULUM</h2>
+	</article>
+	</a>
+</section>
+<section class="text-center tile">
+	<a href="{{ url_for('courses.show')}}">
+	<article class="title">
+		<br /><br /><br /><br /><br />
+		<h2 style="margin-top: 0px;">COURSES</h2>
+	</article>
+	</a>
+</section>
+<section class="text-center tile">
+	<a href="{{ url_for('articles.show')}}">
+	<article class="title">
+		<br /><br /><br /><br /><br />
+		<h2 style="margin-top: 0px;">ARTICLES</h2>
+	</article>
+	</a>
+</section>
+<section class="text-center tile">
+	<a href="{{ url_for('questions.show')}}">
+	<article class="title">
+		<br /><br /><br /><br /><br />
+		<h2 style="margin-top: 0px;">QUESTIONS</h2>
+	</article>
+	</a>
+</section>
+<section class="text-center tile">
+	{% if current_user.is_authenticated %}
+	<a href="{{ url_for('user.userPage', username=current_user.username)}}">
+	{% else %}
+	<a href="{{ url_for('main.show', page='login')}}">
+	{% endif %}
+	<article class="title">
+		<br /><br /><br /><br /><br />
+		<h2 style="margin-top: 0px;">PROGRESS</h2>
+	</article>
+	</a>
+</section>
+<section class="text-center tile">
+	<a href="{{ url_for('add.main')}}">
+	<article class="title">
+		<br /><br /><br /><br /><br />
+		<h2 style="margin-top: 0px;">ADD</h2>
+	</article>
+	</a>
+</section>
+</section>
+{% endblock %}
