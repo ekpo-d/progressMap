@@ -1,0 +1,49 @@
+/* Tags */
+a{
+	text-decoration: none;
+	color: #99CCFF;
+}
+a:hover {
+	text-decoration: none;
+	color: #99CCFF;
+}
+a:visited {
+	text-decoration: none;
+	color: #99CCFF;
+}
+
+/* Classes */
+.bg {
+	background: url( '/static/img/bg.png') no-repeat;
+	background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+	overflow-y: hidden;
+}
+.landing {
+	color: white;
+	border: solid 3px #99CCFF;
+	border-radius: 10px;
+	margin-top: 5%;
+  width: 300px;
+  height: 500px;
+}
+.landing h1 {
+	color: #99CCFF;
+}
+.landing .btn {
+	color: white;
+	padding: 15px 100px;
+	background-color: transparent;
+	border: solid 2px #99CCFF;
+	border-radius: 5px
+}
+.landing .btn:hover {
+	color: black;
+	background-color: #99CCFF;
+	transition: 0.4s;
+}
+
+
+/* Ids */
