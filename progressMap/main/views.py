@@ -10,6 +10,8 @@ def show(page):
 		return render_template('signin.html')
 	elif page == 'signup':
 		return render_template('signup.html')
+	elif page == 'map':
+		return render_template('map.html')
 	else:
 		abort(404)
 
