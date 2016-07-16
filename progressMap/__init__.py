@@ -8,6 +8,7 @@ basedir = path.abspath(path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
+app.config['SECRET_KEY'] = '\xcbP\x08\xf1\x9c\xe8\x9fq\x19\xf7\xf9\xb4\x05\xe3\xbc\x98A\x04\x9fw\xfa\t\x1cN'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + path.join(basedir, 'models.db')
 db = SQLAlchemy(app)
 
