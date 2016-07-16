@@ -8,7 +8,7 @@ class User(db.Model):
 	email = db.Column(db.String(120), unique = True)
 	articles =  db.relationship('Articles', backref='user', lazy='dynamic')
 	completed = db.relationship('Completed', backref='user', lazy='dynamic')
-	allArticles = db.relationship('allCompleted', backref='user', dynamic='loading')
+	allUserArticles = db.relationship('allUserArticles', backref='user', lazy='dynamic')
 	
 	def __repr__(self):
 		return '<User %r>' %self.username
@@ -24,10 +24,18 @@ class Articles(db.Model):
 		return "<Article '%r'>".format(self.title)
 	
 class Completed(db.Model):
-	id = db.Column(db.Integer, primary_key = true)
+	id = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Article '%r'>".format(self.title)
+		return "<Completed '%r'>".format(self.title)
+class allUserArticles(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	title = db.Column(db.String(300), nullable=False)
+	description = db.Column(db.Text, nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	
+	def __repr__(self):
+		return "<All user articles '%r'>".format(self.title)
