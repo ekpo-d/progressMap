@@ -7,9 +7,12 @@
 <br /><br />
 <input class="form-control" type="password" placeholder="Password" required>
 <br /><br />
-</form>
 {% endblock %}
-
-
+{% block login%}
+<a href="{{ url_for('main.show', page='login') }}"><button class='btn' type="submit">LOG IN</button></a>
+<br /><br />
+<br /><br />
+{% endblock %}
+</form>
 {% block signup %}
 {% endblock %}

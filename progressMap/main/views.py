@@ -1,17 +1,26 @@
-from flask import render_template, abort
-from . import main, forms
+from flask import render_template, abort, redirect
+from .. import models
+from . import main
+from forms import LoginForm
+
+User = models.User()
 
 @main.route('/', defaults={'page' : 'index'})
 @main.route('/<page>', methods=['GET', 'POST'])
 def show(page):
 	if page == 'index':
 		return render_template('index.html')
-	elif page == 'login':
-		return render_template('login.html')
-	elif page == 'signup':
-		return render_template('signup.html')
 	elif page == 'map':
 		return render_template('map.html')
+	elif page == 'login':
+		form = LoginForm()
+		if form.validate_on_submit():
+			user = User.query.filter_by(username=form.username.data).first()
+			if user is not None:
+				return redirect(url_for(progress.user(user)))
+		return render_template('login.html', form=form)
+	elif page == 'signup':
+		return render_template('signup.html')
 	else:
 		abort(404)
 

@@ -31,6 +31,7 @@ class Completed(db.Model):
 	
 	def __repr__(self):
 		return "<Completed '%r'>".format(self.title)
+	
 class allUserArticles(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
