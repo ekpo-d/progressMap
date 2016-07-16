@@ -1,13 +1,13 @@
 from flask import render_template, abort
-from . import main
+from . import main, forms
 
 @main.route('/', defaults={'page' : 'index'})
-@main.route('/<page>')
+@main.route('/<page>', methods=['GET', 'POST'])
 def show(page):
 	if page == 'index':
 		return render_template('index.html')
 	elif page == 'login':
-		return render_template('signin.html')
+		return render_template('login.html')
 	elif page == 'signup':
 		return render_template('signup.html')
 	elif page == 'map':
