@@ -1,6 +1,6 @@
 from flask import render_template
-from . import progress
+from . import user
 
-@progress.route('/<username>')
+@user.route('/<username>')
 def userPage(username):
 	return render_template('progress.html', username = username)

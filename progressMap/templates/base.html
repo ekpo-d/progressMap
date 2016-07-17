@@ -17,17 +17,42 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ url_for('main.show', page='map') }}">
+				<a class="navbar-brand active" href="{{ url_for('main.show', page='map') }}">
 					ProgressMap
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right nav-items text-center">
-  					<li><a href="{{ url_for('progress.userPage', username='David') }}">PROGRESS</a></li>
+					{% block curriculums_link %}
+  					<li><a href="{{ url_for('curriculums.show')}}">CURRICULUMS</a></li>
+					{% endblock %}
+					{% block courses_link %}
+  					<li><a href="{{ url_for('courses.show')}}">COURSES</a></li>
+					{% endblock %}
+					{% block articles_link %}
   					<li><a href="{{ url_for('articles.show')}}">ARTICLES</a></li>
-  					<li><a href="{{ url_for('post.ask')}}">ASK</a></li>
-					<li><a href="{{ url_for('post.add')}}">ADD</a></li>
-  					<li><a href="#">SIGN OUT</a></li>
+					{% endblock %}
+					{% block questions_link %}
+					<li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">QUESTIONS
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="text-center"><a href="{{ url_for('questions.show')}}">VIEW</a></li>
+                            <li class="text-center"><a href="{{ url_for('questions.ask')}}">ASK</a></li>
+                        </ul>
+                    </li>
+					{% endblock %}
+					{% block user_link %}
+					<li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">USER
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="text-center"><a href="{{ url_for('user.userPage', username='David') }}">PROGRESS</a></li>
+                            <li class="text-center"><a href="{{ url_for('add.main')}}">ADD</a></li>
+                            <li class="text-center"><a href="#">SIGN OUT</a></li>
+                        </ul>
+                    </li>
+					{% endblock %}
 				</ul>
 			</div>
 		</div>
@@ -48,7 +73,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Date Added</p>
+			<p class="date">Curriculum, Course, Date Added</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -59,7 +84,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Date Added</p>
+			<p class="date">Curriculum, Course, Date Added</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -70,7 +95,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Date Added</p>
+			<p class="date">Curriculum, Course, Date Added</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -81,7 +106,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Date Added</p>
+			<p class="date">Curriculum, Course, Date Added</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -92,7 +117,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Date Added</p>
+			<p class="date">Curriculum, Course, Date Added</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -103,7 +128,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Date Added</p>
+			<p class="date">Curriculum, Course, Date Added</p>
 			<button class="button">View</button>
 		</article>
 	</section>
