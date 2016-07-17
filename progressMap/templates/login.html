@@ -5,9 +5,9 @@
 <form action="" method="post">
 {{ form.hidden_tag() }}
 <br /><br /><br />
-{{ render_field(form.username, class_="form-control", placeholder="Username") }}
+{{ render_field(form.username, class_="form-control", placeholder="Username", required=True) }}
 <br /><br />
-{{ render_field(form.password, class_="form-control", placeholder="Password") }}
+{{ render_field(form.password, class_="form-control", placeholder="Password", required=True) }}
 <br /><br />
 {% endblock %}
 {% block login%}

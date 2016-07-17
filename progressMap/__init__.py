@@ -3,6 +3,8 @@ from os import path
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from flask_login import LoginManager
+
 
 basedir = path.abspath(path.dirname(__file__))
 
@@ -12,6 +14,9 @@ app.config['SECRET_KEY'] = '\xcbP\x08\xf1\x9c\xe8\x9fq\x19\xf7\xf9\xb4\x05\xe3\x
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + path.join(basedir, 'models.db')
 db = SQLAlchemy(app)
 
+login_manager = LoginManager()
+login_manager.session_protection = 'strong'
+login_manager.init_app(app)
 
 from .main import main as main_blueprint
 from .progress import progress as pr_blueprint

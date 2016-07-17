@@ -13,6 +13,17 @@ a:visited {
 }
 
 /* Classes */
+.error ul{
+	padding-left: 0;
+	
+	list-style: none;
+	color: #f77c7c;
+}
+.error li{
+	padding-top: 10px;
+	display: inline-block;
+	text-align: center;
+}
 .bg {
 	background: url( '/static/img/bg.png') no-repeat;
 	background-attachment: fixed;

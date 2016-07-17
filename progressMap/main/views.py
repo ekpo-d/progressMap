@@ -1,4 +1,4 @@
-from flask import render_template, abort, redirect
+from flask import render_template, abort, redirect, url_for
 from .. import models
 from . import main
 from forms import LoginForm
@@ -17,7 +17,7 @@ def show(page):
 		if form.validate_on_submit():
 			user = User.query.filter_by(username=form.username.data).first()
 			if user is not None:
-				return redirect(url_for(progress.user(user)))
+				return redirect (url_for('.show', page='map'))
 		return render_template('login.html', form=form)
 	elif page == 'signup':
 		return render_template('signup.html')
