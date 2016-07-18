@@ -6,7 +6,7 @@ from . import questions, forms
 def show():
 	return render_template('questions.html')
 
-@questions.route('/ask')
+@questions.route('/ask', methods=['GET', 'POST'])
 def ask():
 	form = forms.askForm()
 	return render_template('ask.html', form = form)

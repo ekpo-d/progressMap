@@ -2,7 +2,7 @@ from flask import render_template, abort
 from . import add, forms
 
 
-@add.route('/')
+@add.route('/' methods=['GET', 'POST'])
 def main():
 	form = forms.addForm()
 	return render_template('add.html', form = form)
