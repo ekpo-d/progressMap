@@ -1,4 +1,5 @@
-{% extends 'add.html' %}
+{% extends 'base.html' %}
+{% from 'form_macros.html' import render_field %}
 
 {% block title %}
 ASK QUESTIONS
@@ -18,18 +19,21 @@ ASK QUESTIONS
 {% block content %}
 <div class="container-fluid">
 <section class="row">
+	<form action="" method="post">
+	{{ form.hidden_tag() }}
 	<section class="col-sm-12">
 	<section class="add">
-	<input class="form-control" type="text" placeholder="Title" required>
+	{{ render_field(form.title, class_="form-control", placeholder="Title", required=True) }}
 	<br /><br />
-	<input class="form-control" type="text" placeholder="Article" required>
+	{{ render_field(form.article, class_="form-control", placeholder="Article", required=True) }}
 	<br /><br />
-	<textarea class="form-control" placeholder="Message" style="height: 200px;" required></textarea>
+	{{ render_field(form.message, class_="addTextarea form-control", placeholder="Message", required=True) }}
 	<br />
-	<button class="button right">Add</button>
+	<button class="button right" type="submit">Add</button>
 	</section>
 	<br /><br />
 	</section>
+	</form>
 </section>
 </div>
 {% endblock %}

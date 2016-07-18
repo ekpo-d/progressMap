@@ -1,5 +1,5 @@
 from flask import render_template, abort
-from . import questions
+from . import questions, forms
 
 
 @questions.route('/')
@@ -8,4 +8,5 @@ def show():
 
 @questions.route('/ask')
 def ask():
-	return render_template('ask.html')
+	form = forms.askForm()
+	return render_template('ask.html', form = form)

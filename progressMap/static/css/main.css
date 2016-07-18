@@ -13,10 +13,15 @@ a:visited {
 }
 
 /* Classes */
+textarea.addTextarea{
+height: 300px;
+}
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+	background-color: gray;
+}
 .navbar-default .navbar-nav>li>a.active {
     color: black;
 }
-
 .error ul{
 	padding-left: 0;
 	

@@ -1,7 +1,6 @@
 from flask import render_template, abort, redirect, url_for
 from .. import models
-from . import main
-from forms import LoginForm
+from . import main, forms
 
 User = models.User()
 
@@ -13,7 +12,7 @@ def show(page):
 	elif page == 'map':
 		return render_template('map.html')
 	elif page == 'login':
-		form = LoginForm()
+		form = forms.LoginForm()
 		if form.validate_on_submit():
 			user = User.query.filter_by(username=form.username.data).first()
 			if user is not None:
