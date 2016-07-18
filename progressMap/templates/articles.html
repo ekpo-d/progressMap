@@ -3,3 +3,7 @@
 {% block title %}
 ARTICLES
 {% endblock %}
+
+{% block articles_link %}
+<li><a class="active" href="{{ url_for('articles.show')}}">ARTICLES</a></li>
+{% endblock %}

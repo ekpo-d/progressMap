@@ -3,4 +3,4 @@ from . import user
 
 @user.route('/<username>')
 def userPage(username):
-	return render_template('progress.html', username = username)
+	return render_template('user.html', username = username)

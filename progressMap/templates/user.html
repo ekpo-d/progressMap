@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
+
 {% block title %}{{username}}{% endblock %}
+
+{% block user_link %}
+<li class="dropdown">
+<a class="dropdown-toggle active" data-toggle="dropdown" href="#">USER
+<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="text-center active"><a href="{{ url_for('user.userPage', username='David') }}">PROGRESS</a></li>
+<li class="text-center"><a href="{{ url_for('add.main')}}">ADD</a></li>
+<li class="text-center"><a href="#">SIGN OUT</a></li>
+</ul>
+</li>
+{% endblock %}
+
 {% block currentProgress %}
 <section class="container-fluid text-center">
 <h3 class="b-down">Current Progress</h2>

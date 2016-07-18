@@ -4,6 +4,10 @@
 COURSES
 {% endblock %}
 
+{% block courses_link %}
+<li><a class="active" href="{{ url_for('courses.show')}}">COURSES</a></li>
+{% endblock %}
+
 {% block content %}
 	<section class="container-fluid content">
 	<section class="text-center tile">
