@@ -24,7 +24,7 @@ ADD
 	{{ form.hidden_tag() }}
 	{{ render_field(form.title, class_="form-control", placeholder="Title", required=True) }}
 	<br /><br />
-	{{ render_field(form.curriculum, class_="form-control", placeholder="Curriculum", required=True) }}
+	{{ render_field(form.select, class_="form-control", required=True) }}
 	<br /><br />
 	{{ render_field(form.description, class_="addTextarea form-control", placeholder="Description", required=True) }}
 	<br />

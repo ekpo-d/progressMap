@@ -13,6 +13,16 @@ a:visited {
 }
 
 /* Classes */
+.flashes ul {
+    margin: 0 0;
+	background: #d4d4d4;
+    color: #000;
+    list-style-type: none;
+    list-style: none;
+}
+article.flashes {
+    margin-bottom: 1em;
+}
 textarea.addTextarea{
 height: 300px;
 }

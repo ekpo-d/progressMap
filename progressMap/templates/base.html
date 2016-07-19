@@ -66,6 +66,17 @@
 	<!-- content start -->
 	{% block content %}
 	<section class="container-fluid content">
+	<article class="flashes text-center">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<ul>
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		{% endwith %}
+	</article>
 	<section class="text-center tile">
 		<article class="title">
 			<br /><br /><br />
