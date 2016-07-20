@@ -13,6 +13,9 @@ a:visited {
 }
 
 /* Classes */
+.course, .curriculum{
+	display: none;
+}
 .flashes ul {
     margin: 0 0;
 	background: #d4d4d4;

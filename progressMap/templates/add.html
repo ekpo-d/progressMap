@@ -25,6 +25,14 @@ ADD
 	{{ render_field(form.title, class_="form-control", placeholder="Title", required=True) }}
 	<br /><br />
 	{{ render_field(form.select, class_="form-control", required=True) }}
+	<div class="course">
+	<br /><br />
+	{{ render_field(form.course, class_="form-control", placeholder="Course Title", required=True) }}
+	</div>
+	<div class="curriculum">
+	<br /><br />
+	{{ render_field(form.curriculum, class_="form-control", placeholder="Curriculum Title", required=True) }}
+	</div>
 	<br /><br />
 	{{ render_field(form.description, class_="addTextarea form-control", placeholder="Description", required=True) }}
 	<br />
