@@ -17,12 +17,23 @@ class User(db.Model):
 class Articles(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
+	courses = db.Column(db.Text, nullable=False)
+	curriculum = db.Column(db.Text, nullable=False)
 	description = db.Column(db.Text, nullable=False)
-	date = db.Column(db.DateTime, default=datetime.utcnow)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
 		return "<Article '%r'>".format(self.title)
+	
+class Courses(db.Model):
+	id  = db.Column(db.Integer, primary_key = True)
+	title = db.Column(db.String(300), nullable=False)
+	curriculum = db.Column(db.Text, nullable=False)
+	description = db.Column(db.Text, nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	
+	def __repr__(self):
+		return "<Course '%r'>".format(self.title)
 	
 class Completed(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
