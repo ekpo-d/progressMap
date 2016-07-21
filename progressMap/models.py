@@ -8,8 +8,10 @@ class User(db.Model):
 	email = db.Column(db.String(120), unique = True)
 	password = db.Column(db.String(30))
 	articles =  db.relationship('Articles', backref='user', lazy='dynamic')
+	courses =  db.relationship('Courses', backref='user', lazy='dynamic')
+	curriculums =  db.relationship('Curriculums', backref='user', lazy='dynamic')
 	completed = db.relationship('Completed', backref='user', lazy='dynamic')
-	allUserArticles = db.relationship('allUserArticles', backref='user', lazy='dynamic')
+	allContent = db.relationship('AllContent', backref='user', lazy='dynamic')
 	
 	def __repr__(self):
 		return '<User %r>' %self.username
@@ -33,7 +35,16 @@ class Courses(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Course '%r'>".format(self.title)
+		return "<Course '%r'>".format(self.title)	
+	
+class Curriculums(db.Model):
+	id  = db.Column(db.Integer, primary_key = True)
+	title = db.Column(db.String(300), nullable=False)
+	description = db.Column(db.Text, nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	
+	def __repr__(self):
+		return "<Curriculums '%r'>".format(self.title)
 	
 class Completed(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
@@ -44,7 +55,7 @@ class Completed(db.Model):
 	def __repr__(self):
 		return "<Completed '%r'>".format(self.title)
 	
-class allUserArticles(db.Model):
+class AllContent(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
