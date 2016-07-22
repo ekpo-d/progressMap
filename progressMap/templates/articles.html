@@ -21,7 +21,11 @@ ARTICLES
 				{{ article.description }}
 			</h4>
 			<p class="date">{{ article.course }} in {{ article.curriculum }}</p>
-			<p class="date">Added by {{ article.user.username }}</p>
+			<p class="date">Added by 
+				<a href="{{ url_for('user.userPage', username=article.user.username)}}">
+					{{ article.user.username }}
+				</a>
+			</p>
 			<button class="button">View</button>
 		</article>
 	</section>

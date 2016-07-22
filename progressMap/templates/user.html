@@ -7,7 +7,7 @@
 <a class="dropdown-toggle active" data-toggle="dropdown" href="#">USER
 <span class="caret"></span></a>
 <ul class="dropdown-menu">
-<li class="text-center active"><a href="{{ url_for('user.userPage', username='David') }}">PROGRESS</a></li>
+<li class="text-center active"><a href="{{ url_for('user.userPage', username='david') }}">PROGRESS</a></li>
 <li class="text-center"><a href="{{ url_for('add.main')}}">ADD</a></li>
 <li class="text-center"><a href="#">SIGN OUT</a></li>
 </ul>
@@ -30,17 +30,17 @@
 	<br />
 </article>
 <article class="col-sm-3">
-<h1>23</h1>
+<h1>15</h1>
 <h4>COMPLETED</h4>
 	<br />
 </article>
 <article class="col-sm-3">
-<h1>23</h1>
+<h1>15</h1>
 <h4>REMAINING</h4>
 	<br />
 </article>
 <article class="col-sm-3">
-<h1>23</h1>
+<h1>30</h1>
 <h4>OVERALL</h4>
 	<br />
 </article>
@@ -73,7 +73,26 @@
 	</article>
 </section>
 </section>
+<br /><br />
 {% endblock %}
 
 {% block content %}
+<h3 class="b-down text-center">Added Content</h3>
+<section class="container-fluid content">
+	{% for content in user.articles%}
+	<section class="text-center tile">
+		<article class="{{content.title}}">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">{{content.title}}</h2>
+			<h4 class="desc">
+				{{content.description}}
+			</h4>
+			<p class="date">{{content.course}} in {{content.curriculum}}</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	{% else %}
+	<h4 class="text-center">No content has been added yet.</h4>
+	{% endfor %}
+</section>
 {% endblock %}

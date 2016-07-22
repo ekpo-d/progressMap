@@ -47,7 +47,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">USER
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li class="text-center"><a href="{{ url_for('user.userPage', username='David') }}">PROGRESS</a></li>
+                            <li class="text-center"><a href="{{ url_for('user.userPage', username='david') }}">PROGRESS</a></li>
                             <li class="text-center"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
                             <li class="text-center"><a href="#">SIGN OUT</a></li>
                         </ul>
@@ -58,8 +58,6 @@
 		</div>
 	</nav>
 	<!-- nav end -->
-	{% block currentProgress %}
-	{% endblock %}
 	
 	<article class="flashes text-center">
 		{% with messages = get_flashed_messages() %}
@@ -72,6 +70,9 @@
 		{% endif %}
 		{% endwith %}
 	</article>
+	
+	{% block currentProgress %}
+	{% endblock %}
 	
 	{% block overallProgress %}
 	{% endblock %}

@@ -5,6 +5,9 @@ a, a:hover, a:visited {
 }
 
 /* Classes */
+.tile a{
+	text-decoration: underline;
+}
 .landing a, .landing a:hover, .landing a:visited{
 	color: #99CCFF;
 }
