@@ -1,8 +1,7 @@
 from flask import render_template, abort, redirect, url_for
+from flask_login import login_user
 from .. import models
 from . import main, forms
-
-User = models.User()
 
 @main.route('/', defaults={'page' : 'index'})
 @main.route('/<page>', methods=['GET', 'POST'])
@@ -14,8 +13,9 @@ def show(page):
 	elif page == 'login':
 		form = forms.LoginForm()
 		if form.validate_on_submit():
-			user = User.query.filter_by(username=form.username.data).first()
+			user = models.User.query.filter_by(username=form.username.data).first()
 			if user is not None:
+				login_user(user, form,remember_me.data)
 				return redirect (url_for('.show', page='map'))
 		return render_template('login.html', form=form)
 	elif page == 'signup':
