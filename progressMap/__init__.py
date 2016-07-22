@@ -16,6 +16,7 @@ db = SQLAlchemy(app)
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
+login_manager.login_view = 'main.show'
 login_manager.init_app(app)
 
 from .main import main as main_blueprint

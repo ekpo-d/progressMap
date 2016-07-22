@@ -8,6 +8,8 @@
 {{ render_field(form.username, class_="form-control", placeholder="Username", required=True) }}
 <br /><br />
 {{ render_field(form.password, class_="form-control", placeholder="Password", required=True) }}
+<br />
+{{ render_field(form.remember_me) }}Keep me logged in 
 <br /><br />
 {% endblock %}
 {% block login%}

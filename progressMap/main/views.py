@@ -30,6 +30,13 @@ def show(page):
 	else:
 		abort(404)
 
+@main.app_errorhandler(401)
+def page_not_found(e):
+	return render_template('401.html'), 401
+		
+@main.app_errorhandler(403)
+def page_not_found(e):
+	return render_template('403.html'), 403
 	
 @main.app_errorhandler(404)
 def page_not_found(e):
