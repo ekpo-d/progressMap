@@ -5,7 +5,7 @@ a, a:hover, a:visited {
 }
 
 /* Classes */
-.tile a{
+.underline a{
 	text-decoration: underline;
 }
 .landing a, .landing a:hover, .landing a:visited{

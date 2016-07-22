@@ -1,4 +1,5 @@
 from flask import render_template, abort, flash, redirect, url_for
+from flask_login import login_required
 from . import add, forms
 from .. import models, db
 
@@ -10,6 +11,7 @@ def main():
 	return render_template('add.html')
 
 @add.route('/article', methods=['GET', 'POST'])
+@login_required
 def article():
 	form = forms.articleForm()
 	if form.validate_on_submit():
