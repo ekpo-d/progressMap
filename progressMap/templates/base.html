@@ -48,7 +48,7 @@
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li class="text-center"><a href="{{ url_for('user.userPage', username='David') }}">PROGRESS</a></li>
-                            <li class="text-center"><a href="{{ url_for('add.main')}}">ADD</a></li>
+                            <li class="text-center"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
                             <li class="text-center"><a href="#">SIGN OUT</a></li>
                         </ul>
                     </li>
@@ -61,11 +61,6 @@
 	{% block currentProgress %}
 	{% endblock %}
 	
-	{% block overallProgress %}
-	{% endblock %}
-	<!-- content start -->
-	{% block content %}
-	<section class="container-fluid content">
 	<article class="flashes text-center">
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
@@ -77,6 +72,12 @@
 		{% endif %}
 		{% endwith %}
 	</article>
+	
+	{% block overallProgress %}
+	{% endblock %}
+	<!-- content start -->
+	{% block content %}
+	<section class="container-fluid content">
 	<section class="text-center tile">
 		<article class="title">
 			<br /><br /><br />
@@ -84,7 +85,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Course, Date Added</p>
+			<p class="date">Curriculum, Course</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -95,7 +96,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Course, Date Added</p>
+			<p class="date">Curriculum, Course</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -106,7 +107,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Course, Date Added</p>
+			<p class="date">Curriculum, Course</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -117,7 +118,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Course, Date Added</p>
+			<p class="date">Curriculum, Course</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -128,7 +129,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Course, Date Added</p>
+			<p class="date">Curriculum, Course</p>
 			<button class="button">View</button>
 		</article>
 	</section>
@@ -139,7 +140,7 @@
 			<h4 class="desc">
 				This is the description...
 			</h4>
-			<p class="date">Curriculum, Course, Date Added</p>
+			<p class="date">Curriculum, Course</p>
 			<button class="button">View</button>
 		</article>
 	</section>
