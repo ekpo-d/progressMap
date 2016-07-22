@@ -1,4 +1,4 @@
-from datetime import datetime
+from sqlalchemy import desc
 
 from progressMap import db
 
@@ -14,18 +14,18 @@ class User(db.Model):
 	allContent = db.relationship('AllContent', backref='user', lazy='dynamic')
 	
 	def __repr__(self):
-		return '<User %r>' %self.username
+		return '<User %s>' %self.username
 	
 class Articles(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
-	courses = db.Column(db.Text, nullable=False)
+	course = db.Column(db.Text, nullable=False)
 	curriculum = db.Column(db.Text, nullable=False)
 	description = db.Column(db.Text, nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Article '%r'>".format(self.title)
+		return "<Article '%s'>".format(self.title)
 	
 class Courses(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
@@ -35,7 +35,7 @@ class Courses(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Course '%r'>".format(self.title)	
+		return "<Course '%s'>".format(self.title)	
 	
 class Curriculums(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
@@ -44,7 +44,7 @@ class Curriculums(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Curriculums '%r'>".format(self.title)
+		return "<Curriculums '%s'>".format(self.title)
 	
 class Completed(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
@@ -53,7 +53,7 @@ class Completed(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Completed '%r'>".format(self.title)
+		return "<Completed '%s'>".format(self.title)
 	
 class AllContent(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
@@ -62,4 +62,7 @@ class AllContent(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<All user articles '%r'>".format(self.title)
+		return "<All user articles '%s'>".format(self.title)
+	
+def getFromDb(className, num):
+	return className.query.order_by(desc(className.title)).limit(num)

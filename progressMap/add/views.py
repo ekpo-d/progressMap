@@ -1,16 +1,42 @@
 from flask import render_template, abort, flash, redirect, url_for
 from . import add, forms
-from .. import models
+from .. import models, db
 
+def user():
+	return models.User.query.filter_by(username='david').first()
 
-@add.route('/', methods=['GET', 'POST'])
+@add.route('/')
 def main():
-	form = forms.addForm()
+	return render_template('add.html')
+
+@add.route('/article', methods=['GET', 'POST'])
+def article():
+	form = forms.articleForm()
 	if form.validate_on_submit():
-		title = forms.title.data
-		select = forms.select.data
-		description = forms.description.data
-		article = models.Article(title=title, )
-		flash("Stored '{}'".format(form.title.data) )
-		return redirect(url_for('articles.show'));
-	return render_template('add.html', form = form)
+		title = form.title.data
+		course = form.course.data
+		curriculum = form.curriculum.data
+		description = form.description.data
+		row = models.Articles(title=title, course=course, curriculum=curriculum, description=description, user=user())
+		db.session.add(row)
+		db.session.commit()
+		
+		flash("Added article '{}'.".format(form.title.data))
+		return redirect(url_for('articles.show'))
+	return render_template('addArticle.html', form=form)
+
+@add.route('/course', methods=['GET', 'POST'])
+def course():
+	form = forms.courseForm()
+	if form.validate_on_submit():
+		flash("Added course '{}'.".format(form.title.data))
+		return redirect(url_for('courses.show'))
+	return render_template('addCourse.html', form=form)
+
+@add.route('/curriculum', methods=['GET', 'POST'])
+def curriculum():
+	form = forms.curriculumForm()
+	if form.validate_on_submit():
+		flash("Added curriculum '{}'.".format(form.title.data))
+		return redirect(url_for('curriculums.show'))
+	return render_template('addCurriculum.html', form=form)

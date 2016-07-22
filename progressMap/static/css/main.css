@@ -1,20 +1,25 @@
 /* Tags */
-a{
+a, a:hover, a:visited {
 	text-decoration: none;
-	color: #99CCFF;
-}
-a:hover {
-	text-decoration: none;
-	color: #99CCFF;
-}
-a:visited {
-	text-decoration: none;
-	color: #99CCFF;
+	color: black;
 }
 
 /* Classes */
-.course, .curriculum{
-	display: none;
+.landing a, .landing a:hover, .landing a:visited{
+	color: #99CCFF;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: black;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: black;
+}
+.navbar-default .navbar-toggle:hover {
+    background-color: white;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: white;
 }
 .flashes ul {
     margin: 0 0;
