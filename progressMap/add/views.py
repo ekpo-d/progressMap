@@ -1,10 +1,7 @@
 from flask import render_template, abort, flash, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 from . import add, forms
 from .. import models, db
-
-def user():
-	return models.User.query.filter_by(username='david').first()
 
 @add.route('/')
 def main():
@@ -19,7 +16,7 @@ def article():
 		course = form.course.data
 		curriculum = form.curriculum.data
 		description = form.description.data
-		row = models.Articles(title=title, course=course, curriculum=curriculum, description=description, user=user())
+		row = models.Articles(title=title, course=course, curriculum=curriculum, description=description, user=current_user)
 		db.session.add(row)
 		db.session.commit()
 		

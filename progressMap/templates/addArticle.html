@@ -1,20 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'add.html' %}
 {% from 'form_macros.html' import render_field %}
 
 {% block title %}
 ADD ARTICLE
-{% endblock %}
-
-{% block user_link %}
-<li class="dropdown">
-<a class="dropdown-toggle active" data-toggle="dropdown" href="#">USER
-<span class="caret"></span></a>
-<ul class="dropdown-menu">
-<li class="text-center"><a href="{{ url_for('user.userPage', username='David') }}">PROGRESS</a></li>
-<li class="text-center active"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
-<li class="text-center"><a href="#">SIGN OUT</a></li>
-</ul>
-</li>
 {% endblock %}
 
 {% block content %}

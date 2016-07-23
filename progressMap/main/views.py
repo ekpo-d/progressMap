@@ -1,5 +1,5 @@
 from flask import render_template, abort, redirect, url_for, request, flash
-from flask_login import login_user
+from flask_login import login_user,logout_user
 from .. import models, login_manager
 from . import main, forms
 
@@ -27,6 +27,10 @@ def show(page):
 		return render_template('login.html', form=form)
 	elif page == 'signup':
 		return render_template('signup.html')
+	elif page == 'signout':
+		logout_user()
+		return redirect(url_for('main.show', page='index'))
+		
 	else:
 		abort(404)
 
