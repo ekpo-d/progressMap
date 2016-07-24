@@ -7,3 +7,10 @@ class LoginForm(Form):
 	password = PasswordField(validators=[DataRequired()])
 	remember_me = BooleanField('Remember me')
 	
+class SignupForm(Form):
+	username = StringField(validators=[DataRequired()])
+	email = StringField(validators=[DataRequired()])
+	password = PasswordField(validators=[DataRequired()])
+	ConfirmPassword = PasswordField(validators=[DataRequired()])
+	remember_me = BooleanField('Remember me')
+	
