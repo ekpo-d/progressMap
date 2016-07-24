@@ -10,7 +10,7 @@ class LoginForm(Form):
 	remember_me = BooleanField('Remember me')
 	
 class SignupForm(Form):
-	username = StringField(validators=[DataRequired(), Length(3, 40)])
+	username = StringField(validators=[DataRequired(), Length(3, 40), Regexp('^[A-Za-z0-9_]{3,}$', message='Usernames consist of numbers, letters, and underscores.')])
 	email = StringField(validators=[DataRequired(), Email(), Length(1, 120)])
 	password = PasswordField(validators=[DataRequired(), EqualTo('confirmPassword', message='Passwords must match.')])
 	confirmPassword = PasswordField(validators=[DataRequired()])
