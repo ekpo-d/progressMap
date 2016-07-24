@@ -21,7 +21,7 @@ def show(page):
 			if user is not None and user.check_password(form.password.data):
 				login_user(user, form.remember_me.data)
 				flash('Login Successful.')
-				return redirect (request.args.get('next') or url_for('.show', page='map'))
+				return redirect (request.args.get('next') or url_for('user.userPage', username=user.username))
 			flash('Incorrect username or password.')
 			return redirect(url_for('main.show', page='login'))
 		return render_template('login.html', form=form)

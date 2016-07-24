@@ -10,7 +10,7 @@
 <ul class="dropdown-menu">
 <li class="text-center active"><a href="{{ url_for('user.userPage', username=current_user.username) }}">PROGRESS</a></li>
 <li class="text-center"><a href="{{ url_for('add.main')}}">ADD</a></li>
-<li class="text-center"><a href="#">SIGN OUT</a></li>
+<li class="text-center"><a href="{{ url_for('main.show', page='signout')}}">SIGN OUT</a></li>
 </ul>
 </li>
 {% else %}
