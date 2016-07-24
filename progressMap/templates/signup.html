@@ -1,8 +1,23 @@
 {% extends 'baseLanding.html' %}
 
+{% block flash %}
+<br />
+<article class="langingFlashes text-center">
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+	<ul>
+	{% for message in messages %}
+		<li>{{ message }}</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+{% endwith %}
+</article>
+{% endblock %}
+
 {% block desc %}
 <form action="" method="post">
-<br /><br />
+<br />
 <input class="form-control" type="text" placeholder="Username" required>
 <br />
 <input class="form-control" type="text" placeholder="Email" required>
@@ -14,5 +29,10 @@
 </form>
 {% endblock %}
 
+{% block loginForm %}
+{% endblock %}
+
 {% block login %}
+{% endblock %}
+{% block explore %}
 {% endblock %}

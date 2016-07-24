@@ -5,6 +5,16 @@ a, a:hover, a:visited {
 }
 
 /* Classes */
+.langingFlashes ul{
+	padding-left: 0;
+	list-style: none;
+	color: #f77c7c;
+}
+.langingFlashes li{
+	display: inline-block;
+	text-align: center;
+}
+
 .underline a{
 	text-decoration: underline;
 }
@@ -45,7 +55,6 @@ height: 300px;
 }
 .error ul{
 	padding-left: 0;
-	
 	list-style: none;
 	color: #f77c7c;
 }
