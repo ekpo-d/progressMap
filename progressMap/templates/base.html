@@ -48,20 +48,14 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{current_user.username}}
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li class="text-center"><a href="{{ url_for('user.userPage', username='{{current_user.username}}') }}">PROGRESS</a></li>
+                            <li class="text-center"><a href="{{ url_for('user.userPage', username=current_user.username) }}">PROGRESS</a></li>
                             <li class="text-center"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
                             <li class="text-center"><a href="{{ url_for('main.show', page='signout')}}">SIGN OUT</a></li>
                         </ul>
                     </li>
 					{% else %}
-					<li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">USER
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="text-center"><a href="{{ url_for('user.userPage', username='david') }}">PROGRESS</a></li>
-                            <li class="text-center"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
-                        </ul>
-                    </li>
+					<li><a href="{{ url_for('main.show', page='login') }}">LOGIN</a>
+					</li>
 					{% endif %}
 					{% endblock %}
 				</ul>

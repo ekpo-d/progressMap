@@ -1,8 +1,10 @@
 from flask import render_template
+from flask_login import current_user, login_required
 from . import user
 from .. import models
 
+@login_required
 @user.route('/<username>')
 def userPage(username):
-	user = models.User.query.filter_by(username=username).first_or_404()
+	user = current_user
 	return render_template('user.html', user = user)

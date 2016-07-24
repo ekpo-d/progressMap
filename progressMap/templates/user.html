@@ -3,15 +3,20 @@
 {% block title %}{{username}}{% endblock %}
 
 {% block user_link %}
+{% if current_user.is_authenticated %}
 <li class="dropdown">
-<a class="dropdown-toggle active" data-toggle="dropdown" href="#">USER
+<a class="dropdown-toggle active" data-toggle="dropdown" href="#">{{current_user.username}}
 <span class="caret"></span></a>
 <ul class="dropdown-menu">
-<li class="text-center active"><a href="{{ url_for('user.userPage', username='david') }}">PROGRESS</a></li>
+<li class="text-center active"><a href="{{ url_for('user.userPage', username=current_user.username) }}">PROGRESS</a></li>
 <li class="text-center"><a href="{{ url_for('add.main')}}">ADD</a></li>
 <li class="text-center"><a href="#">SIGN OUT</a></li>
 </ul>
 </li>
+{% else %}
+<li><a href="{{ url_for('main.show', page='login') }}">LOGIN</a>
+</li>
+{% endif %}
 {% endblock %}
 
 {% block currentProgress %}
