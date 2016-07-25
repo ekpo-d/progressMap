@@ -21,7 +21,7 @@ class SignupForm(Form):
 			raise ValidationError('There\'s aready a user with this email address.')
 			
 	def validate_username(self, username_field):
-		if User.query.filter_by(email=username_field.data).first():
+		if User.query.filter_by(username=username_field.data).first():
 			raise ValidationError('This username is already taken.')
 		
 		

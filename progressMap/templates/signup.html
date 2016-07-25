@@ -1,4 +1,5 @@
 {% extends 'baseLanding.html' %}
+{% from 'form_macros.html' import render_field %}
 
 {% block flash %}
 <br />
@@ -21,12 +22,16 @@
 <br />
 {{ render_field(form.username, class_="form-control", placeholder="Username", required=True) }}
 <br />
-{{ render_field(form.username, class_="form-control", placeholder="Email", required=True) }}
+{{ render_field(form.email, class_="form-control", placeholder="Email", required=True) }}
 <br />
 {{ render_field(form.password, class_="form-control", placeholder="Password", required=True) }}
 <br />
-{{ render_field(form.password, class_="form-control", placeholder="Confirm password", required=True) }}
+{{ render_field(form.confirmPassword, class_="form-control", placeholder="Confirm password", required=True) }}
 <br />
+
+{% endblock %}
+{% block signup %}
+<button class='btn' type="submit">SIGN UP</button>
 </form>
 {% endblock %}
 

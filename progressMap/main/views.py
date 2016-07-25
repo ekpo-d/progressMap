@@ -1,6 +1,6 @@
 from flask import render_template, abort, redirect, url_for, request, flash
 from flask_login import login_user,logout_user
-from .. import models, login_manager
+from .. import models, db, login_manager
 from . import main, forms
 
 @login_manager.user_loader
