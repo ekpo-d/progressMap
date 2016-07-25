@@ -37,36 +37,34 @@ class Curriculums(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
+	articles =  db.relationship('Articles', backref='curriculums', lazy='dynamic')
+	courses =  db.relationship('Courses', backref='curriculums', lazy='dynamic')
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-	articles =  db.relationship('Articles', backref='curriculum', lazy='dynamic')
-	courses =  db.relationship('Courses', backref='curriculum', lazy='dynamic')
 	
 	def __repr__(self):
 		return "<Curriculums '%s'>".format(self.title)
 	
-class Articles(db.Model):
-	id  = db.Column(db.Integer, primary_key = True)
-	title = db.Column(db.String(300), nullable=False)
-	course = db.Column(db.Text, nullable=False)
-	curriculum = db.Column(db.Text, nullable=False)
-	description = db.Column(db.Text, nullable=False)
-	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-	course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
-	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculum.id'), nullable=False)
-	
-	def __repr__(self):
-		return "<Article '%s'>".format(self.title)
-	
 class Courses(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
-	curriculum = db.Column(db.Text, nullable=False)
 	description = db.Column(db.Text, nullable=False)
+	article =  db.relationship('Articles', backref='courses', lazy='dynamic')
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculum.id'), nullable=False)
+	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)
 	
 	def __repr__(self):
 		return "<Course '%s'>".format(self.title)
+	
+class Articles(db.Model):
+	id  = db.Column(db.Integer, primary_key = True)
+	title = db.Column(db.String(300), nullable=False)
+	description = db.Column(db.Text, nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	course_id = db.Column(db.Integer, db.ForeignKey('courses.id'), nullable=False)
+	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)
+	
+	def __repr__(self):
+		return "<Article '%s'>".format(self.title)
 	
 class Completed(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
