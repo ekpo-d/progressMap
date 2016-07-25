@@ -28,6 +28,13 @@ def article():
 def course():
 	form = forms.courseForm()
 	if form.validate_on_submit():
+		title = form.title.data
+		curriculum = form.curriculum.data
+		description = form.description.data
+		row = models.Courses(title=title, curriculum=curriculum, description=description, user=current_user)
+		db.session.add(row)
+		db.session.commit()
+		
 		flash("Added course '{}'.".format(form.title.data))
 		return redirect(url_for('courses.show'))
 	return render_template('addCourse.html', form=form)
@@ -36,6 +43,12 @@ def course():
 def curriculum():
 	form = forms.curriculumForm()
 	if form.validate_on_submit():
+		title = form.title.data.upper()
+		description = form.description.data
+		row = models.Curriculums(title=title, description=description, user=current_user)
+		db.session.add(row)
+		db.session.commit()
+		
 		flash("Added curriculum '{}'.".format(form.title.data))
 		return redirect(url_for('curriculums.show'))
 	return render_template('addCurriculum.html', form=form)

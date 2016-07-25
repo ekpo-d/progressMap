@@ -20,7 +20,10 @@ ARTICLES
 			<h4 class="desc">
 				{{ article.description }}
 			</h4>
-			<p class="date">{{ article.course }} in {{ article.curriculum }}</p>
+			<p class="date underline">
+				<a>{{ article.course }}</a> in 
+				<a>{{ article.curriculum }}</a>
+			</p>
 			<p class="underline">Added by 
 				<a href="{{ url_for('user.userPage', username=article.user.username)}}">
 					{{ article.user.username }}
