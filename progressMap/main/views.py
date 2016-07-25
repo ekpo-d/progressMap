@@ -26,7 +26,14 @@ def show(page):
 			return redirect(url_for('main.show', page='login'))
 		return render_template('login.html', form=form)
 	elif page == 'signup':
-		return render_template('signup.html')
+		form = forms.SignupForm()
+		if form.validate_on_submit():
+			user = models.User(username=form.username.data, email=form.email.data, password=form.password.data)
+			db.session.add(user)
+			db.session.commit()
+			flash('Thanks for signing up. Please log in.')
+			return redirect(url_for('main.show', page='login'))
+		return render_template('signup.html', form=form)
 	elif page == 'signout':
 		logout_user()
 		return redirect(url_for('main.show', page='index'))

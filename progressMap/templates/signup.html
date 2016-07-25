@@ -17,14 +17,15 @@
 
 {% block desc %}
 <form action="" method="post">
+{{ form.hidden_tag() }}
 <br />
-<input class="form-control" type="text" placeholder="Username" required>
+{{ render_field(form.username, class_="form-control", placeholder="Username", required=True) }}
 <br />
-<input class="form-control" type="text" placeholder="Email" required>
+{{ render_field(form.username, class_="form-control", placeholder="Email", required=True) }}
 <br />
-<input class="form-control" type="password" placeholder="Password" required>
+{{ render_field(form.password, class_="form-control", placeholder="Password", required=True) }}
 <br />
-<input class="form-control" type="password" placeholder="Confirm Password" required>
+{{ render_field(form.password, class_="form-control", placeholder="Confirm password", required=True) }}
 <br />
 </form>
 {% endblock %}
