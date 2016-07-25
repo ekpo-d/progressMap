@@ -51,7 +51,7 @@ a:visited {
 	display: inline-block;
 	text-align: center;
 }
-.underline a{
+.underline a:hover{
 	text-decoration: underline;
 }
 .landing a, .landing a:hover, .landing a:visited{
