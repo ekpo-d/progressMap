@@ -1,8 +1,15 @@
-from flask import render_template
+from flask import render_template, abort
 from . import curriculums
 from .. import models
 
-@curriculums.route('/')
-def show():
-	curriculumList = models.getFromDb(models.Curriculums, 6)
-	return render_template('curriculums.html', curriculumList=curriculumList)
+@curriculums.route('/', defaults={'page': 'all'})
+@curriculums.route('/<page>')
+def show(page):
+	if page == 'all':
+		curriculumList = models.getFromDb(models.Curriculums, 6)
+		return render_template('curriculums.html', curriculumList=curriculumList)
+	elif page == models.get_by_title(models.Curriculums, page).title:
+		curriculum = models.get_by_title(models.Curriculums, page)
+		return render_template('showCurriculum.html', curriculum=curriculum)
+	else:
+		abort(404)

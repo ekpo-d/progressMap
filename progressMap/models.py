@@ -83,3 +83,6 @@ class AllContent(db.Model):
 	
 def getFromDb(className, num):
 	return className.query.order_by(desc(className.title)).limit(num)
+
+def get_by_title(className, titleName):
+		return className.query.filter_by(title=titleName).first()

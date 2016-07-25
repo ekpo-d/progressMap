@@ -43,7 +43,7 @@ def course():
 def curriculum():
 	form = forms.curriculumForm()
 	if form.validate_on_submit():
-		title = form.title.data.upper()
+		title = form.title.data
 		description = form.description.data
 		row = models.Curriculums(title=title, description=description, user=current_user)
 		db.session.add(row)
