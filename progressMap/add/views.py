@@ -30,6 +30,7 @@ def course():
 	if form.validate_on_submit():
 		title = form.title.data
 		curriculum = form.curriculum.data
+		#if
 		description = form.description.data
 		row = models.Courses(title=title, curriculum=curriculum, description=description, user=current_user)
 		db.session.add(row)
