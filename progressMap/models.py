@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
 	username = db.Column(db.String(40), unique = True)
 	email = db.Column(db.String(120), unique = True)
 	password_hash = db.Column(db.String)
+
 	articles =  db.relationship('Articles', backref='user', lazy='dynamic')
 	courses =  db.relationship('Courses', backref='user', lazy='dynamic')
 	curriculums =  db.relationship('Curriculums', backref='user', lazy='dynamic')
@@ -37,8 +38,10 @@ class Curriculums(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
+
 	articles =  db.relationship('Articles', backref='curriculums', lazy='dynamic')
 	courses =  db.relationship('Courses', backref='curriculums', lazy='dynamic')
+
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
@@ -48,7 +51,9 @@ class Courses(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
+
 	article =  db.relationship('Articles', backref='courses', lazy='dynamic')
+
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)
 	
@@ -59,6 +64,7 @@ class Articles(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
+
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	course_id = db.Column(db.Integer, db.ForeignKey('courses.id'), nullable=False)
 	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)
