@@ -12,7 +12,7 @@
 	<a href="{{ url_for('user.userPage', username=current_user.username) }}">PROGRESS</a>
 </li>
 <li class="text-center active">
-	<a href="{{ url_for('user.addedContent', username=current_user.username))}}">CONTENT</a>
+	<a href="{{ url_for('user.addedContent', username=current_user.username)}}">CONTENT</a>
 </li>
 <li class="text-center"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
 <li class="text-center"><a href="{{ url_for('main.show', page='signout')}}">SIGN OUT</a></li>
@@ -24,71 +24,9 @@
 {% endif %}
 {% endblock %}
 
-{% block currentProgress %}
-<section class="container-fluid text-center">
-<h3 class="b-down">Current Progress</h2>
-<br />
-<section class="row">
-<article class="col-sm-3">
-<div class="progress" style="margin-top: 29px;">
-  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
-  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-    50% Complete
-  </div>
-</div>
-<h4>PROGRESS</h4>
-	<br />
-</article>
-<article class="col-sm-3">
-<h1>15</h1>
-<h4>COMPLETED</h4>
-	<br />
-</article>
-<article class="col-sm-3">
-<h1>15</h1>
-<h4>REMAINING</h4>
-	<br />
-</article>
-<article class="col-sm-3">
-<h1>30</h1>
-<h4>OVERALL</h4>
-	<br />
-</article>
-</section>
-</section>
-<br /><br />
-{% endblock %}
-	
-{% block overallProgress %}
-<section class="container-fluid text-center">
-<h3 class="b-down">Progress Checklist</h3>
-	<br />
-<section class="row">
-	<article class="col-xs-2">
-		<h4>Completed</h4>
-	</article>
-	<article class="col-xs-10">
-		<h4>Details</h4>
-	</article>
-</section>
-	<br />
-<section class="row">
-	<article class="col-xs-2">
-		<div class="input-group" style="margin: auto;">
-        <input type="checkbox" style="margin-top: 7px;">
-    </div>
-	</article>
-	<article class="col-xs-10">
-		<p>Read html5</p>
-	</article>
-</section>
-</section>
-<br /><br />
-{% endblock %}
-
 {% block content %}
-<h3 class="b-down text-center">Added Content</h3>
 <section class="container-fluid content">
+<h3 class="b-down text-center">ARTICLES</h3>
 	{% for article in user.articles%}
 	<section class="text-center tile">
 		<article class="title">
@@ -105,7 +43,46 @@
 		</article>
 	</section>
 	{% else %}
-	<h4 class="text-center">No content has been added yet.</h4>
+	<h4 class="text-center">No article has been added yet.</h4>
+	{% endfor %}
+</section>
+<br />
+<section class="container-fluid content">
+<h3 class="b-down text-center">COURSES</h3>
+	{% for course in user.courses%}
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">{{course.title}}</h2>
+			<h4 class="desc">
+				{{course.description}}
+			</h4>
+			<p class="date underline">
+				<a>{{ course.curriculum.title }} curriculum</a>
+			</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	{% else %}
+	<h4 class="text-center">No course has been added yet.</h4>
+	{% endfor %}
+</section>
+<br />
+<section class="container-fluid content">
+<h3 class="b-down text-center">CURRICULUMS</h3>
+	{% for curriculum in user.curriculums%}
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">{{curriculum.title}}</h2>
+			<h4 class="desc">
+				{{curriculum.description}}
+			</h4>
+			<button class="button">View</button>
+		</article>
+	</section>
+	{% else %}
+	<h4 class="text-center">No curriculum has been added yet.</h4>
 	{% endfor %}
 </section>
 {% endblock %}
