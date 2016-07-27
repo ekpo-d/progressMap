@@ -12,7 +12,11 @@ ADD
 <span class="caret"></span></a>
 <ul class="dropdown-menu">
 <li class="text-center">
-	<a href="{{ url_for('user.userPage', username=current_user.username) }}">PROGRESS</a></li>
+	<a href="{{ url_for('user.userPage', username=current_user.username) }}">PROGRESS</a
+</li>
+<li class="text-center">
+	<a href="{{ url_for('user.addedContent', username=current_user.username)}}">CONTENT</a>
+</li>
 <li class="text-center active"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
 <li class="text-center"><a href="{{ url_for('main.show', page='signout')}}">SIGN OUT</a></li>
 </ul>

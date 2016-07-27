@@ -11,6 +11,6 @@ def userPage(username):
 
 @login_required
 @user.route('/<username>/content')
-def userPage(username):
+def addedContent(username):
 	user = current_user
 	return render_template('addedContent.html', user = user)
