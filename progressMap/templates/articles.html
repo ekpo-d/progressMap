@@ -21,8 +21,8 @@ ARTICLES
 				{{ article.description }}
 			</h4>
 			<p class="date underline">
-				<a>{{ article.course }}</a> in 
-				<a>{{ article.curriculum }}</a>
+				<a>{{ article.course.title }} course </a> in 
+				<a>{{ article.curriculum.title }} curriculum</a>
 			</p>
 			<p class="underline">Added by 
 				<a href="{{ url_for('user.userPage', username=article.user.username)}}">
