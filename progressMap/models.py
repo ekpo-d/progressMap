@@ -39,8 +39,8 @@ class Curriculums(db.Model):
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
 
-	articles =  db.relationship('Articles', backref='curriculums', lazy='dynamic')
-	courses =  db.relationship('Courses', backref='curriculums', lazy='dynamic')
+	articles =  db.relationship('Articles', backref='curriculum', lazy='dynamic')
+	courses =  db.relationship('Courses', backref='curriculum', lazy='dynamic')
 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
@@ -52,7 +52,7 @@ class Courses(db.Model):
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
 
-	article =  db.relationship('Articles', backref='courses', lazy='dynamic')
+	article =  db.relationship('Articles', backref='course', lazy='dynamic')
 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)

@@ -30,7 +30,11 @@ def course():
 	if form.validate_on_submit():
 		title = form.title.data
 		curriculum = form.curriculum.data
-		#if
+		if models.get_by_title(models.Curriculums, curriculum):
+			curriculum = models.get_by_title(models.Curriculums, curriculum)
+		else:
+			flash('Sorry the curriculum you are trying to add to doesn\'t exist!')
+			return render_template('addCourse.html', form=form)	
 		description = form.description.data
 		row = models.Courses(title=title, curriculum=curriculum, description=description, user=current_user)
 		db.session.add(row)
