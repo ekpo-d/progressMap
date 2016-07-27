@@ -11,27 +11,51 @@ PYTHON - CURRICULUM
 {% block content %}
 <section class="container-fluid content">
 <h4>Title: {{ curriculum.title }}</h4>
-<h4>Type: Curriculum</h4>
 <h4>Description: {{ curriculum.description }}</h4>
 <br /><br />
-<section class="container-fluid">
-<h2 class="b-down text-center">Courses</h2>
-<section class="text-center tile">
-	<article class="title">
-		<br /><br /><br /><br /><br />
-		<h2 style="margin-top: 0px;">OOP</h2>
-	</article>
+
+<section class="container-fluid content">
+<h3 class="b-down text-center">ARTICLES</h3>
+	{% for article in curriculum.articles%}
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">{{article.title}}</h2>
+			<h4 class="desc">
+				{{article.description}}
+			</h4>
+			<p class="date underline">
+				<a>{{ article.course.title }} course </a> in
+				<a>{{ article.curriculum.title }} curriculum</a>
+			</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	{% else %}
+	<h4 class="text-center">No article has been added yet.</h4>
+	{% endfor %}
 </section>
-</section>
-<br /><br />
-<section class="container-fluid">
-<h2 class="b-down text-center">Articles</h2>
-<section class="text-center tile">
-	<article class="title">
-		<br /><br /><br /><br /><br />
-		<h2 style="margin-top: 0px;">Primitive Data Types</h2>
-	</article>
-</section>
+
+<br />
+<section class="container-fluid content">
+<h3 class="b-down text-center">COURSES</h3>
+	{% for course in curriculum.courses %}
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">{{course.title}}</h2>
+			<h4 class="desc">
+				{{course.description}}
+			</h4>
+			<p class="date underline">
+				<a>{{ course.curriculum.title }} curriculum</a>
+			</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	{% else %}
+	<h4 class="text-center">No course has been added yet.</h4>
+	{% endfor %}
 </section>
 </section>
 {% endblock %}
