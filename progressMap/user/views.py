@@ -8,3 +8,9 @@ from .. import models
 def userPage(username):
 	user = current_user
 	return render_template('user.html', user = user)
+
+@login_required
+@user.route('/<username>/content')
+def userPage(username):
+	user = current_user
+	return render_template('addedContent.html', user = user)

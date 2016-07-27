@@ -1,8 +1,8 @@
-# Personal notes
-Notes.txt
-
 # Python compiled files
 *.pyc 
+
+# Personal notes
+Notes.txt
 
 # Windows image file caches
 Thumbs.db
