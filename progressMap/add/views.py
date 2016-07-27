@@ -3,6 +3,19 @@ from flask_login import login_required, current_user
 from . import add, forms
 from .. import models, db
 
+def returnDbObject(dbtable, title):
+	if models.getByTitle(dbtable, title):
+		title = models.getByTitle(dbtable, title)
+		return title
+	
+def refreshOnError(fieldTitle, template, form):
+	flash('Sorry the {} you are trying to add to doesn\'t exist!'.format(fieldTitle) )
+	return render_template(template, form=form)
+
+def dbCommit(row):
+	db.session.add(row)
+	db.session.commit()
+
 @add.route('/')
 def main():
 	return render_template('add.html')
@@ -13,12 +26,15 @@ def article():
 	form = forms.articleForm()
 	if form.validate_on_submit():
 		title = form.title.data
-		course = form.course.data
-		curriculum = form.curriculum.data
+		course = returnDbObject(models.Courses, form.course.data)
+		curriculum = returnDbObject(models.Curriculums, form.curriculum.data)
 		description = form.description.data
-		row = models.Articles(title=title, course=course, curriculum=curriculum, description=description, user=current_user)
-		db.session.add(row)
-		db.session.commit()
+		
+		if course and curriculum:
+			row = models.Articles(title=title, course=course, curriculum=curriculum, description=description, user=current_user)
+			dbCommit(row)
+		else:
+			return refreshOnError('curriculum or course', 'addArticle.html', form)			
 		
 		flash("Added article '{}'.".format(form.title.data))
 		return redirect(url_for('articles.show'))
@@ -29,16 +45,13 @@ def course():
 	form = forms.courseForm()
 	if form.validate_on_submit():
 		title = form.title.data
-		curriculum = form.curriculum.data
-		if models.get_by_title(models.Curriculums, curriculum):
-			curriculum = models.get_by_title(models.Curriculums, curriculum)
-		else:
-			flash('Sorry the curriculum you are trying to add to doesn\'t exist!')
-			return render_template('addCourse.html', form=form)	
 		description = form.description.data
-		row = models.Courses(title=title, curriculum=curriculum, description=description, user=current_user)
-		db.session.add(row)
-		db.session.commit()
+		curriculum = returnDbObject(models.Curriculums, form.curriculum.data)
+		if curriculum:
+			row = models.Courses(title=title, curriculum=curriculum, description=description, user=current_user)
+			dbCommit(row)
+		else:
+			return refreshOnError('curriculum', 'addCourse.html', form)
 		
 		flash("Added course '{}'.".format(form.title.data))
 		return redirect(url_for('courses.show'))
@@ -51,8 +64,7 @@ def curriculum():
 		title = form.title.data
 		description = form.description.data
 		row = models.Curriculums(title=title, description=description, user=current_user)
-		db.session.add(row)
-		db.session.commit()
+		dbCommit(row)
 		
 		flash("Added curriculum '{}'.".format(form.title.data))
 		return redirect(url_for('curriculums.show'))

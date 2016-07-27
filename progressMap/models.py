@@ -45,7 +45,7 @@ class Curriculums(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Curriculums '%s'>".format(self.title)
+		return "<Curriculums '%s'>" %self.title
 	
 class Courses(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
@@ -58,7 +58,7 @@ class Courses(db.Model):
 	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Course '%s'>".format(self.title)
+		return "<Course '%s'>" %(self.title)
 	
 class Articles(db.Model):
 	id  = db.Column(db.Integer, primary_key = True)
@@ -93,5 +93,5 @@ class AllContent(db.Model):
 def getFromDb(className, num):
 	return className.query.order_by(desc(className.title)).limit(num)
 
-def get_by_title(className, titleName):
+def getByTitle(className, titleName):
 		return className.query.filter_by(title=titleName).first()
