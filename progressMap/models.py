@@ -52,7 +52,7 @@ class Courses(db.Model):
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
 
-	article =  db.relationship('Articles', backref='course', lazy='dynamic')
+	articles =  db.relationship('Articles', backref='course', lazy='dynamic')
 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)
