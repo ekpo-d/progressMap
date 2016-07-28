@@ -21,7 +21,7 @@ ARTICLES
 				{{ article.description }}
 			</h4>
 			<p class="date underline">
-				<a href="{{ url_for('courses.show', page=article.course.title)}}">{{ article.course.title.upper() }}</a> in
+				<a href="{{ url_for('courses.show', page=article.course.title)}}">{{ article.course.title.upper() }}</a> -
 				<a href="{{ url_for('curriculums.show', page=article.curriculum.title)}}">{{ article.curriculum.title.upper() }}
 				</a>
 			</p>
