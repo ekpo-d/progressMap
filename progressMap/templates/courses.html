@@ -13,16 +13,18 @@ COURSES
 	<section class="container-fluid content">
 	{% for course in coursesList %}
 	<section class="text-center tile">
-		<article class="title">
+		<article class="title underline">
 			<br /><br /><br />
-			<h2 style="margin-top: 0px;">{{ course.title }}</h2>
+			<h2 style="margin-top: 0px;">{{ course.title.capitalize() }}</h2>
 			<h4 class="desc">
 				{{ course.description }}
 			</h4>
-			<p class="date underline">
-			<a>{{ course.curriculum.title }} curriculum</a>
+			<p class="date">
+			In <a href="{{ url_for('curriculums.show', page=course.curriculum.title)}}">{{ course.curriculum.title.upper() }}</a>
 			</p>
+			<a href="{{ url_for('courses.show', page=course.title)}}">
 			<button class="button">View</button>
+			</a>
 		</article>
 	</section>
 	{% endfor %}

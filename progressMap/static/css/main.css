@@ -51,8 +51,12 @@ a:visited {
 	display: inline-block;
 	text-align: center;
 }
-.underline a:hover{
+.underline a {
+	color: black;
 	text-decoration: underline;
+}
+.underline a:visited {
+	text-decoration: none;
 }
 .landing a, .landing a:hover, .landing a:visited{
 	color: #99CCFF;

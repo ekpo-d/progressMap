@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-PYTHON - CURRICULUM
+{{ curriculum.title.upper() }} - CURRICULUM
 {% endblock %}
 
 {% block curriculums_link %}
@@ -20,15 +20,17 @@ PYTHON - CURRICULUM
 	<section class="text-center tile">
 		<article class="title">
 			<br /><br /><br />
-			<h2 style="margin-top: 0px;">{{article.title}}</h2>
+			<h2 style="margin-top: 0px;">{{article.title.capitalize()}}</h2>
 			<h4 class="desc">
 				{{article.description}}
 			</h4>
 			<p class="date underline">
-				<a>{{ article.course.title }} course </a> in
-				<a>{{ article.curriculum.title }} curriculum</a>
+				<a href="{{ url_for('courses.show', page=article.course.title)}}">{{ article.course.title.upper() }}</a> -
+				<a href="{{ url_for('curriculums.show', page=article.curriculum.title)}}">{{ article.curriculum.title.upper() }}</a>
 			</p>
+			<a href="{{ url_for('articles.show', page=article.title)}}">
 			<button class="button">View</button>
+			</a>
 		</article>
 	</section>
 	{% else %}
@@ -43,14 +45,16 @@ PYTHON - CURRICULUM
 	<section class="text-center tile">
 		<article class="title">
 			<br /><br /><br />
-			<h2 style="margin-top: 0px;">{{course.title}}</h2>
+			<h2 style="margin-top: 0px;">{{course.title.capitalize()}}</h2>
 			<h4 class="desc">
 				{{course.description}}
 			</h4>
 			<p class="date underline">
-				<a>{{ course.curriculum.title }} curriculum</a>
+				In <a href="{{ url_for('curriculums.show', page=course.curriculum.title)}}">{{ course.curriculum.title.upper() }}</a>
 			</p>
+			<a href="{{ url_for('courses.show', page=course.title)}}">
 			<button class="button">View</button>
+			</a>
 		</article>
 	</section>
 	{% else %}

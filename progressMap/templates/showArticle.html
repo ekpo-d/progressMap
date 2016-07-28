@@ -1,50 +1,18 @@
 {% extends "base.html" %}
 
 {% block title %}
-CURRICULUM
+{{ article.title.upper() }} - ARTICLE
 {% endblock %}
 
-{% block curriculums_link %}
-<li><a class="active" href="{{ url_for('curriculums.show')}}">CURRICULUMS</a></li>
+{% block articles_link %}
+<li><a class="active" href="{{ url_for('articles.show')}}">ARTICLES</a></li>
 {% endblock %}
 
 {% block content %}
 <section class="container-fluid content">
-<section class="text-center tile">
-	<article class="title">
-		<br /><br /><br /><br /><br />
-		<h2 style="margin-top: 0px;">PYTHON</h2>
-	</article>
-</section>
-<section class="text-center tile">
-	<article class="title">
-		<br /><br /><br /><br /><br />
-		<h2 style="margin-top: 0px;">JAVASCRIPT</h2>
-	</article>
-</section>
-<section class="text-center tile">
-	<article class="title">
-		<br /><br /><br /><br /><br />
-		<h2 style="margin-top: 0px;">PHP</h2>
-	</article>
-</section>
-<section class="text-center tile">
-	<article class="title">
-		<br /><br /><br /><br /><br />
-		<h2 style="margin-top: 0px;">JAVA</h2>
-	</article>
-</section>
-<section class="text-center tile">
-	<article class="title">
-		<br /><br /><br /><br /><br />
-		<h2 style="margin-top: 0px;">HTML</h2>
-	</article>
-</section>
-<section class="text-center tile">
-	<article class="title">
-		<br /><br /><br /><br /><br />
-		<h2 style="margin-top: 0px;">CSS</h2>
-	</article>
-</section>
-</section>
+<h4>Title: {{ article.title }}</h4>
+<h4>Description:
+	<br /><br />
+	{{ article.description }}</h4>
+<br /><br />
 {% endblock %}

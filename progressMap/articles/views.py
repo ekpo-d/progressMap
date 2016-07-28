@@ -9,7 +9,7 @@ def show(page):
 		articlesList = models.getFromDb(models.Articles, 6)
 		return render_template('articles.html', articlesList=articlesList)
 	elif page == models.getByTitle(models.Articles, page).title:
-		course = models.getByTitle(models.Articles, page)
+		article = models.getByTitle(models.Articles, page)
 		return render_template('showArticle.html', article=article)
 	else:
 		abort(404)
