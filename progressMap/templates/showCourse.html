@@ -28,7 +28,9 @@
 				<a href="{{ url_for('courses.show', page=article.course.title)}}">{{ article.course.title.upper() }}</a> -
 				<a href="{{ url_for('curriculums.show', page=article.curriculum.title)}}">{{ article.curriculum.title.upper() }}</a>
 			</p>
+			<a href="{{ url_for('articles.show', page=article.title)}}">
 			<button class="button">View</button>
+			</a>
 		</article>
 	</section>
 	{% else %}
