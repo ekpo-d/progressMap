@@ -184,6 +184,27 @@ height: 300px;
 .python{
 	background: url(/static/img/python.svg) no-repeat;
 }
+.java{
+	background: url(/static/img/java.svg) no-repeat;
+}
+.node{
+	background: url(/static/img/node.svg) no-repeat;
+}
+.javascript{
+	background: url(/static/img/js.svg) no-repeat;
+}
+.php{
+	background: url(/static/img/php.svg) no-repeat;
+}
+.ruby{
+	background: url(/static/img/ruby.svg) no-repeat;
+}
+.rails{
+	background: url(/static/img/rails.svg) no-repeat;
+}
+.clojure{
+	background: url(/static/img/clojure.svg) no-repeat;
+}
 .title {
 	height: 100%;
 	padding: 0;
