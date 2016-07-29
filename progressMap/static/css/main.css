@@ -181,10 +181,12 @@ height: 300px;
 	border: 1px solid #DDDDDC;
 }
 	}
-.title{
+.python{
+	background: url(/static/img/python.svg) no-repeat;
+}
+.title {
 	height: 100%;
 	padding: 0;
-	background: url(/static/img/python.svg) no-repeat;
 	background-position: center;
 }
 .b-down{

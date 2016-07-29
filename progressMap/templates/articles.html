@@ -14,7 +14,7 @@ ARTICLES
 <section class="container-fluid content">
 	{% for article in articlesList %}
 	<section class="text-center tile">
-		<article class="title">
+		<article class="title {{article.curriculum.title}}">
 			<br /><br /><br />
 			<h2 style="margin-top: 0px;">{{ article.title.capitalize() }}</h2>
 			<h4 class="desc">
