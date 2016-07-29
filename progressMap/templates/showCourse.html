@@ -10,8 +10,11 @@
 
 {% block content %}
 <section class="container-fluid content">
-<h4>Title: {{ course.title.capitalize() }}</h4>
-<h4>Description: {{ course.description }}</h4>
+<section class="text-center">
+<h1 class="b-down">{{ course.title.capitalize() }}</h1>
+<br />
+<h4>{{ course.description }}</h4>
+</section>
 <br /><br />
 
 <section class="container-fluid content">
