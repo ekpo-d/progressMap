@@ -23,9 +23,7 @@ ASK QUESTIONS
 	{{ form.hidden_tag() }}
 	<section class="col-sm-12">
 	<section class="add">
-	{{ render_field(form.title, class_="form-control", placeholder="Title", required=True) }}
-	<br /><br />
-	{{ render_field(form.article, class_="form-control", placeholder="Article", required=True) }}
+	{{ render_field(form.title, class_="form-control", placeholder="Title (Article title)", required=True) }}
 	<br /><br />
 	{{ render_field(form.message, class_="addTextarea form-control", placeholder="Message", required=True) }}
 	<br />
