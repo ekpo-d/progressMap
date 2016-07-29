@@ -90,6 +90,21 @@ class AllContent(db.Model):
 	def __repr__(self):
 		return "<All user articles '%s'>".format(self.title)
 	
+class Questions(db.Model):
+	id= db.Column(db.Integer, primary_key = True)
+	title = db.Column(db.Text, nullable = False)
+	message = db.Column(db.Text, nullable = False)
+	
+	comments = db.relationship('Comments', backref = 'question', lazy = 'dynamic')
+	
+class Comments(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	message = db.Column(db.Text, nullable = False)
+	
+	question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable = False)
+	
+	
+	
 def getFromDb(className, num):
 	return className.query.order_by(desc(className.title)).limit(num)
 
