@@ -9,10 +9,12 @@
 {% endblock %}
 
 {% block content %}
-<section class="container-fluid content">
-<h4>Title: {{ article.title }}</h4>
-<h4>Description:
-	<br /><br />
-	{{ article.description }}</h4>
+<section class="container-fluid content text-center ">
+<section class="centerContent">
+<h1 class="b-down">{{ article.title.capitalize() }}</h1>
+<br />
+<h4 >{{ article.description }}</h4>
 <br /><br />
+</section>
+</section>
 {% endblock %}
