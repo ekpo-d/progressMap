@@ -25,7 +25,7 @@ def main():
 def article():
 	form = forms.articleForm()
 	if form.validate_on_submit():
-		title = form.title.data
+		title = form.title.data.lower()
 		course = returnDbObject(models.Courses, form.course.data)
 		curriculum = returnDbObject(models.Curriculums, form.curriculum.data)
 		description = form.description.data
@@ -44,7 +44,7 @@ def article():
 def course():
 	form = forms.courseForm()
 	if form.validate_on_submit():
-		title = form.title.data
+		title = form.title.data.lower()
 		description = form.description.data
 		curriculum = returnDbObject(models.Curriculums, form.curriculum.data)
 		if curriculum:
@@ -61,7 +61,7 @@ def course():
 def curriculum():
 	form = forms.curriculumForm()
 	if form.validate_on_submit():
-		title = form.title.data
+		title = form.title.data.lower()
 		description = form.description.data
 		row = models.Curriculums(title=title, description=description, user=current_user)
 		dbCommit(row)
