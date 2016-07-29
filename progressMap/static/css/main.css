@@ -13,8 +13,6 @@ a:visited {
 }
 
 /* Classes */
-/* NAVBAR HARMBURGER */
-
 /*
 @media screen and (min-width: 768px){
 	.centerContent{
@@ -24,6 +22,19 @@ a:visited {
 	}
 }
 */
+
+@media screen and (min-width: 550px){
+.message *{
+	display: inline-block;
+}
+.messageCol{
+	width: 55%;
+}
+.message h4:not(:first-child) {
+	width: 10%;
+}
+	}
+/* NAVBAR HARMBURGER */
 .navbar-default .navbar-toggle .icon-bar {
  background-color: #fff; 
 }
