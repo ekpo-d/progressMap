@@ -5,5 +5,4 @@ from wtforms.validators import DataRequired
 
 class askForm(Form):
 	title = StringField(validators=[DataRequired()])
-	article = StringField(validators=[DataRequired()])
 	message = StringField(widget=TextArea(), validators=[DataRequired()])
