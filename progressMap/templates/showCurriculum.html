@@ -18,7 +18,7 @@
 <h3 class="b-down text-center">ARTICLES</h3>
 	{% for article in curriculum.articles%}
 	<section class="text-center tile">
-		<article class="title">
+		<article class="title {{curriculum.title}}">
 			<br /><br /><br />
 			<h2 style="margin-top: 0px;">{{article.title.capitalize()}}</h2>
 			<h4 class="desc">
@@ -43,7 +43,7 @@
 <h3 class="b-down text-center">COURSES</h3>
 	{% for course in curriculum.courses %}
 	<section class="text-center tile">
-		<article class="title">
+		<article class="title {{curriculum.title}}">
 			<br /><br /><br />
 			<h2 style="margin-top: 0px;">{{course.title.capitalize()}}</h2>
 			<h4 class="desc">

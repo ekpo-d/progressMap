@@ -13,7 +13,7 @@ COURSES
 	<section class="container-fluid content">
 	{% for course in coursesList %}
 	<section class="text-center tile">
-		<article class="title underline">
+		<article class="title underline {{course.curriculum.title}}">
 			<br /><br /><br />
 			<h2 style="margin-top: 0px;">{{ course.title.capitalize() }}</h2>
 			<h4 class="desc">

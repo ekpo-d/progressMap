@@ -15,7 +15,7 @@ CURRICULUM
 	{% for curriculum in curriculumList %}
 	<section class="text-center tile">
 	<a href="{{ url_for('curriculums.show', page=curriculum.title) }}">
-	<article class="title">
+	<article class="title {{curriculum.title}}">
 		<br /><br /><br /><br /><br />
 		<h2 style="margin-top: 0px;" class="curriculumH">{{curriculum.title}}</h2>
 	</article>
