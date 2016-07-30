@@ -67,6 +67,8 @@ class Articles(db.Model):
 	title = db.Column(db.String(300), nullable=False)
 	description = db.Column(db.Text, nullable=False)
 
+	questions = db.relationship('Questions', backref='article', lazy='dynamic')
+
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	course_id = db.Column(db.Integer, db.ForeignKey('courses.id'), nullable=False)
 	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)
@@ -94,9 +96,11 @@ class AllContent(db.Model):
 	
 class Questions(db.Model):
 	id= db.Column(db.Integer, primary_key = True)
-	title = db.Column(db.Text, nullable = False)
 	message = db.Column(db.Text, nullable = False)
+
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	article_id = db.Column(db.Integer, db.ForeignKey('articles.id'), nullable=False)
+
 	
 	comments = db.relationship('Comments', backref = 'question', lazy = 'dynamic')
 	
@@ -121,4 +125,4 @@ def returnDbObject(dbtable, title):
 
 def dbCommit(row):
 	db.session.add(row)
-	db.session.commit()	
+	db.session.commit()
