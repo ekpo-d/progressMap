@@ -103,10 +103,17 @@ class Comments(db.Model):
 	
 	question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable = False)
 	
-	
+def dbCommit(row):
+	db.session.add(row)
+	db.session.commit()	
 	
 def getFromDb(className, num):
 	return className.query.order_by(desc(className.title)).limit(num)
 
 def getByTitle(className, titleName):
 		return className.query.filter_by(title=titleName).first_or_404()
+	
+def returnDbObject(dbtable, title):
+	if models.getByTitle(dbtable, title):
+		title = models.getByTitle(dbtable, title)
+		return title
