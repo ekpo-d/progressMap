@@ -6,7 +6,7 @@ from .. import models
 
 @questions.route('/')
 def show():
-	allQuestions = models.getFromDb(models.Questions, 6)
+	allQuestions = models.getFromDb2(models.Questions, 6)
 	return render_template('questions.html', allQuestions)
 
 @questions.route('/ask', methods=['GET', 'POST'])
