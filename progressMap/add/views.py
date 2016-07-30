@@ -1,7 +1,7 @@
 from flask import render_template, abort, flash, redirect, url_for
 from flask_login import login_required, current_user
 from . import add, forms
-from .. import models, db
+from .. import models
 	
 def refreshOnError(fieldTitle, template, form):
 	flash('Sorry the {} you are trying to add to doesn\'t exist!'.format(fieldTitle) )
