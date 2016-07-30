@@ -17,7 +17,7 @@ def ask():
 		message = form.message.data
 		
 		if title:
-			row = models.Questions(title=title, message=message)
+			row = models.Questions(title=title, message=message, user=current_user)
 			models.dbCommit(row)
 		else:
 			flash('Sorry the article title you are trying to add to doesn\'t exist!')

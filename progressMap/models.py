@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
 	articles =  db.relationship('Articles', backref='user', lazy='dynamic')
 	courses =  db.relationship('Courses', backref='user', lazy='dynamic')
 	curriculums =  db.relationship('Curriculums', backref='user', lazy='dynamic')
+	questions = db.relationship('Questions', backref='user', lazy='dynamic')
+	comments = db.relationship('Comments', backref='user', lazy='dynamic')
 	completed = db.relationship('Completed', backref='user', lazy='dynamic')
 	allContent = db.relationship('AllContent', backref='user', lazy='dynamic')
 	
@@ -94,12 +96,14 @@ class Questions(db.Model):
 	id= db.Column(db.Integer, primary_key = True)
 	title = db.Column(db.Text, nullable = False)
 	message = db.Column(db.Text, nullable = False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	comments = db.relationship('Comments', backref = 'question', lazy = 'dynamic')
 	
 class Comments(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	message = db.Column(db.Text, nullable = False)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable = False)
 	
