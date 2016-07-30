@@ -24,4 +24,7 @@ def ask():
 			flash('Sorry the article title you are trying to add to doesn\'t exist!')
 			return render_template('ask.html', form=form)
 		
+		flash("Added a new question")
+		return redirect(url_for('questions.show'))
+		
 	return render_template('ask.html', form = form)
