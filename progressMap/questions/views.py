@@ -16,7 +16,7 @@ def ask():
 		articleTitle = models.returnDbObject(models.Articles, form.title.data.lower())
 		message = form.message.data
 		
-		if title:
+		if articleTitle:
 			row = models.Questions(article=articleTitle, message=message, user=current_user)
 			models.dbCommit(row)
 		else:
