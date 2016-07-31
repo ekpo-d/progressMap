@@ -30,11 +30,21 @@
 <h4 >{{ question.message }}</h4>
 <br /><br />
 </section>
+<section class="text-center">
 {% if comments %}
 {% for comment in comments%}
-<p>{{ comment.message}}</p>
+<article class="underline"><br />
+<h4>{{ comment.message}}</h4>
+<p>by 
+	<a href="url_for()">
+		{{ comment.user.username}}
+	</a>
+</p>
 {% endfor %}
+</article>
+
 {% else %}
-<p>No replies yet.</p>
+<h4>No replies yet.</p>
 {% endif %}
+</section>
 {% endblock %}
