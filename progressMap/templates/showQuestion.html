@@ -1,18 +1,27 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ article.title.upper() }} - ARTICLE
+{{ question.title.upper() }} - QUESTION
 {% endblock %}
 
-{% block articles_link %}
-<li><a class="active" href="{{ url_for('articles.show')}}">ARTICLES</a></li>
+{% block questions_link %}
+<li class="dropdown">
+<a class="dropdown-toggle active" data-toggle="dropdown" href="#">QUESTIONS
+<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="text-center"><a href="{{ url_for('questions.show')}}">VIEW</a></li>
+<li class="text-center"><a href="{{ url_for('questions.ask')}}">ASK</a></li>
+</ul>
+</li>
 {% endblock %}
 
 {% block content %}
 <section class="container-fluid content text-center">
-<h1 class="b-down">{{ article.title.capitalize() }}</h1>
+<h1 class="b-down">{{ question.title.capitalize() }}</h1>
 <br />
-<h4 >{{ article.description }}</h4>
+<h4 >{{ question.article.title }}</h4>
+<br />
+<h4 >{{ question.message }}</h4>
 <br /><br />
 </section>
 {% endblock %}
