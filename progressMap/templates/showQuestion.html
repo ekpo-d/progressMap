@@ -33,8 +33,8 @@
 {% if comments %}
 {% for comment in comments%}
 <p>{{ comment.message}}</p>
+{% endfor %}
 {% else %}
 <p>No replies yet.</p>
-{% endfor %}
 {% endif %}
 {% endblock %}
