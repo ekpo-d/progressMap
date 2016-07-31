@@ -115,6 +115,9 @@ class Comments(db.Model):
 def getFromDb(className, num):
 	return className.query.order_by(desc(className.title)).limit(num)
 
+def getFromDb2(className, num):
+	return className.query.order_by(desc(className.message)).limit(num)
+
 def getByTitle(className, titleName):
 		return className.query.filter_by(title=titleName).first_or_404()
 	
