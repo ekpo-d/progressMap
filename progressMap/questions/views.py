@@ -8,7 +8,8 @@ from .. import models
 def show(page):
 	if page == 'all':
 		allQuestions = models.getFromDb(models.Questions, 6)
-		return render_template('questions.html', allQuestions=allQuestions)
+		allComments = models.getFromDb(models.Comments, 6)
+		return render_template('questions.html', allQuestions=allQuestions, allComments)
 	elif page ==  models.getByTitle(models.Questions, page).title:
 		question = models.getByTitle(models.Questions, page)
 		comments = models.getComments(question)

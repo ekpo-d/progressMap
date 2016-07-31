@@ -124,9 +124,9 @@ def returnDbObject(dbtable, title):
 		return title
 	
 def getComments(questionObject):
-	comment = Comments.query.filter_by(question_id = int(questionObject.id)).all()
-	if comment:
-		return comment
+	comments = Comments.query.filter_by(question_id = int(questionObject.id)).all()
+	if comments:
+		return comments
 
 def dbCommit(row):
 	db.session.add(row)
