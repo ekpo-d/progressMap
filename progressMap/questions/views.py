@@ -8,7 +8,7 @@ from .. import models
 @questions.route('/<page>')
 def show(page):
 	if page == 'all':
-		allQuestions = models.getFromDb2(models.Questions, 6)
+		allQuestions = models.getFromDb(models.Questions, 6)
 		return render_template('questions.html', allQuestions=allQuestions)
 	elif page ==  models.getByTitle(models.Questions, page).message:
 		question = models.getByTitle(models.Questions, page)
