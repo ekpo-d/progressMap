@@ -20,13 +20,21 @@ QUESTIONS
 	<h2 class="text-center b-down">ALL QUESTIONS</h2>
 	<br />
 	{% for question in allQuestions%}
-	<section class="b-down message text-center">
-		<h4 class="messageCol">{{ question.message }}</h4>
-		<h4>{{ question.article.title }}</h4>
-		<h4>{{ question.user.username }}</h4>
+	<section class="b-down message text-center underline">
+		<h4 class="messageCol">{{ question.message.capitalize() }}</h4>
+		<h4>
+			<a href="{{ url_for('articles.show', page = question.article.title) }}">
+				{{ question.article.title.capitalize() }}
+			</a>
+		</h4>
+		<h4>
+			<a href="{{ url_for('user.userPage', username = question.user.username) }}">
+				{{ question.user.username }}
+			</a>
+		</h4>
 		<h4> Replies</h4>
 	</section>
-	{else}
+	{% else %}
 		<h4 class="text-center">No questions added yet.</h4>
 	{% endfor %}
 	</section>

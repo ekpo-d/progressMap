@@ -7,7 +7,7 @@ from .. import models
 @questions.route('/')
 def show():
 	allQuestions = models.getFromDb2(models.Questions, 6)
-	return render_template('questions.html', allQuestions)
+	return render_template('questions.html', allQuestions=allQuestions)
 
 @questions.route('/ask', methods=['GET', 'POST'])
 @login_required
