@@ -14,13 +14,14 @@ def insertData():
 	python = Curriculums(title='python', description='This is the python curriculum', user=david)
 	oop = Courses(title='oop', curriculum=python, description='This is the oop course', user=david)
 	article = Articles(title='abstract data types', course=oop, curriculum=python, description='this is the article on abstract data types', user=david)
+	question = Questions(title='question title', article=article, message='The body of the question', user='david')
 	
-	db.session.add()
 	
 	db.session.add(david)
 	db.session.add(python)
 	db.session.add(oop)
 	db.session.add(article)
+	db.session.add(question)
 	db.session.commit()
 	print 'Data inserted' 
 	
