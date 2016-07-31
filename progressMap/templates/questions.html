@@ -19,17 +19,16 @@ QUESTIONS
 <section class="container-fluid content">
 	<h2 class="text-center b-down">ALL QUESTIONS</h2>
 	<br />
+	{% for question in allQuestions%}
 	<section class="b-down message text-center">
-		<h4 class="messageCol">Message</h4>
-		<h4>Topic</h4>
-		<h4>User</h4>
+		<h4 class="messageCol">{{ question.message }}</h4>
+		<h4>{{ question.article.title }}</h4>
+		<h4>{{ question.user.username }}</h4>
 		<h4> Replies</h4>
 	</section>
-	<section class="b-down message text-center">
-		<h4 class="messageCol">Message</h4>
-		<h4>Topic</h4>
-		<h4>User</h4>
-		<h4> Replies</h4>
+	{else}
+		<h4 class="text-center">No questions added yet.</h4>
+	{% endfor %}
 	</section>
 </section>
 {% endblock %}
