@@ -21,7 +21,8 @@ def show(page):
 def ask():
 	form = forms.askForm()
 	if form.validate_on_submit():
-		articleTitle = models.returnDbObject(models.Articles, form.title.data.lower())
+		title = form.title.data
+		articleTitle = models.returnDbObject(models.Articles, form.article.data.lower())
 		message = form.message.data
 		
 		if articleTitle:
