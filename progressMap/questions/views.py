@@ -9,7 +9,7 @@ def show(page):
 	if page == 'all':
 		allQuestions = models.getFromDb(models.Questions, 6)
 		allComments = models.getFromDb(models.Comments, 6)
-		return render_template('questions.html', allQuestions=allQuestions, allComments)
+		return render_template('questions.html', allQuestions=allQuestions, allComments=allComments)
 	elif page ==  models.getByTitle(models.Questions, page).title:
 		question = models.getByTitle(models.Questions, page)
 		comments = models.getComments(question)

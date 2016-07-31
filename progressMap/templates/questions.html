@@ -20,6 +20,12 @@ QUESTIONS
 	<h2 class="text-center b-down">ALL QUESTIONS</h2>
 	<br />
 	{% for question in allQuestions%}
+	{% with replies = 0 %}
+	{% for comment in allComments %}
+	{% if comment.question.id == question.id %}
+	{{ replies += 1 }}
+	{% endif %}
+	{% endfor %}
 	<section class="b-down message text-center underline">
 		<h4 class="messageCol">
 			<a href="{{ url_for('questions.show', page = question.title) }}">
@@ -36,7 +42,8 @@ QUESTIONS
 				{{ question.user.username }}
 			</a>
 		</h4>
-		<h4> Replies</h4>
+		<h4> {{ replies }} Replies</h4>
+		{% endwith %}
 	</section>
 	{% else %}
 		<h4 class="text-center">No questions added yet.</h4>
