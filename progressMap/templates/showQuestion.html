@@ -30,4 +30,11 @@
 <h4 >{{ question.message }}</h4>
 <br /><br />
 </section>
+{% if comments %}
+{% for comment in comments%}
+<p>{{ comment.message}}</p>
+{% else %}
+<p>No replies yet.</p>
+{% endfor %}
+{% endif %}
 {% endblock %}

@@ -3,11 +3,6 @@ from flask_login import login_required, current_user
 from . import questions, forms
 from .. import models
 
-def comments(questionObject):
-	comment = models.Comments.query.filter_by(question_id = int(questionObject.id)).first()
-	if comment:
-		return comment
-
 @questions.route('/', defaults={'page':'all'})
 @questions.route('/<page>')
 def show(page):
@@ -16,7 +11,7 @@ def show(page):
 		return render_template('questions.html', allQuestions=allQuestions)
 	elif page ==  models.getByTitle(models.Questions, page).title:
 		question = models.getByTitle(models.Questions, page)
-		comments = getComments(question)
+		comments = models.getComments(question)
 		return render_template('showQuestion.html', question=question, comments=comments)
 	else:
 		abort(404)

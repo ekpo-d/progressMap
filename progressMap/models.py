@@ -122,6 +122,11 @@ def returnDbObject(dbtable, title):
 	if getByTitle(dbtable, title):
 		title = getByTitle(dbtable, title)
 		return title
+	
+def getComments(questionObject):
+	comment = Comments.query.filter_by(question_id = int(questionObject.id)).all()
+	if comment:
+		return comment
 
 def dbCommit(row):
 	db.session.add(row)
