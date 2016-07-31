@@ -10,7 +10,7 @@ def show(page):
 	if page == 'all':
 		allQuestions = models.getFromDb2(models.Questions, 6)
 		return render_template('questions.html', allQuestions=allQuestions)
-	elif page ==  models.getByTitle(models.Questions, page).title:
+	elif page ==  models.getByTitle(models.Questions, page).message:
 		question = models.getByTitle(models.Questions, page)
 		return render_template('showQuestion.html', question=question)
 	else:
