@@ -1,10 +1,12 @@
 from progressMap import app, db
-
+from progressMap.models import User, Curriculums, Courses, Articles, Completed, AllContent, Questions, Comments
 from flask.ext.script import Manager, prompt_bool
-
-from progressMap.models import User
+from flask.ext.migrate import Migrate, MigrateCommand
 
 manager = Manager(app)
+migrate = Migrate(app, db)
+
+manager.add_command('db', MigrateCommand)
 
 @manager.command
 def initdb():
