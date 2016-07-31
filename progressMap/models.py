@@ -102,7 +102,6 @@ class Questions(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	article_id = db.Column(db.Integer, db.ForeignKey('articles.id'), nullable=False)
 
-	
 	comments = db.relationship('Comments', backref = 'question', lazy = 'dynamic')
 	
 class Comments(db.Model):
@@ -115,7 +114,6 @@ class Comments(db.Model):
 	
 def getFromDb(className, num):
 	return className.query.order_by(desc(className.title)).limit(num)
-
 
 def getByTitle(className, titleName):
 		return className.query.filter_by(title=titleName).first_or_404()
