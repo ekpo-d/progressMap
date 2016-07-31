@@ -9,12 +9,11 @@ migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
 @manager.command
-def initdb():
-	db.create_all()
+def insertData():
 	db.session.add(User(username='david', password='test', email='a@b.c'))
 	db.session.add(User(username='ekpo', password='test', email='b@c.d'))
 	db.session.commit()
-	print 'Database initialized' 
+	print 'Data inserted' 
 	
 @manager.command
 def dropdb():
