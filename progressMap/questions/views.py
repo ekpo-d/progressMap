@@ -4,11 +4,18 @@ from . import questions, forms
 from .. import models
 
 
-@questions.route('/')
-def show():
-	allQuestions = models.getFromDb2(models.Questions, 6)
-	return render_template('questions.html', allQuestions=allQuestions)
-
+@questions.route('/', defaults={'page':'all'})
+@questions.route('/<page>')
+def show(page):
+	if page == 'all':
+		allQuestions = models.getFromDb2(models.Questions, 6)
+		return render_template('questions.html', allQuestions=allQuestions)
+	elif page ==  models.getByTitle(models.Questions, page).title:
+		question = models.getByTitle(models.Questions, page)
+		return render_template('showQuestion.html', question=question)
+	else:
+		abort(404)
+	
 @questions.route('/ask', methods=['GET', 'POST'])
 @login_required
 def ask():
