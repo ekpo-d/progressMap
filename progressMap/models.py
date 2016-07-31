@@ -96,6 +96,7 @@ class AllContent(db.Model):
 	
 class Questions(db.Model):
 	id= db.Column(db.Integer, primary_key = True)
+	title = db.Column(db.Text, nullable = False)
 	message = db.Column(db.Text, nullable = False)
 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -115,8 +116,6 @@ class Comments(db.Model):
 def getFromDb(className, num):
 	return className.query.order_by(desc(className.title)).limit(num)
 
-def getFromDb2(className, num):
-	return className.query.order_by(desc(className.message)).limit(num)
 
 def getByTitle(className, titleName):
 		return className.query.filter_by(title=titleName).first_or_404()
