@@ -28,10 +28,13 @@ a:visited {
 	display: inline-block;
 }
 .messageCol{
-	width: 55%;
+	width: 45%;
 }
 .message h4:not(:first-child) {
 	width: 10%;
+}
+.message h4:nth-child(2) {
+	width: 20%;
 }
 	}
 /* NAVBAR HARMBURGER */
