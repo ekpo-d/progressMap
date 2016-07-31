@@ -16,11 +16,17 @@
 {% endblock %}
 
 {% block content %}
-<section class="container-fluid content text-center">
-<h1 class="b-down">{{ question.title.capitalize() }}</h1>
+<section class="container-fluid content text-center underline">
+<article class="b-down">
+<h1>{{ question.title.capitalize() }}</h1>
 <br />
-<h4 >{{ question.article.title }}</h4>
-<br />
+<p>
+	<a href="{{ url_for('articles.show', page = question.article.title) }}">
+		{{ question.article.title.capitalize() }}
+	</a>
+</p>
+</article>
+<br /><br />
 <h4 >{{ question.message }}</h4>
 <br /><br />
 </section>
