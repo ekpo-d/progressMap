@@ -10,8 +10,17 @@ manager.add_command('db', MigrateCommand)
 
 @manager.command
 def insertData():
-	db.session.add(User(username='david', password='test', email='a@b.c'))
-	db.session.add(User(username='ekpo', password='test', email='b@c.d'))
+	david = User(username='david', password='test', email='a@b.c')
+	python = Curriculums(title='python', description='This is the python curriculum', user=david)
+	oop = Courses(title='oop', curriculum=python, description='This is the oop course', user=david)
+	article = Articles(title='abstract data types', course=oop, curriculum=python, description='this is the article on abstract data types', user=david)
+	
+	db.session.add()
+	
+	db.session.add(david)
+	db.session.add(python)
+	db.session.add(oop)
+	db.session.add(article)
 	db.session.commit()
 	print 'Data inserted' 
 	
