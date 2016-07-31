@@ -15,6 +15,7 @@ def insertData():
 	oop = Courses(title='oop', curriculum=python, description='This is the oop course', user=david)
 	article = Articles(title='abstract data types', course=oop, curriculum=python, description='this is the article on abstract data types', user=david)
 	question = Questions(title='question title', article=article, message='The body of the question', user=david)
+	comment = Comments(message='the comment body', question=question, user=david)
 	
 	
 	db.session.add(david)
