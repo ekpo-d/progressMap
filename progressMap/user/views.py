@@ -18,7 +18,7 @@ def addedContent(username):
 @login_required
 @user.route('/<username>/addCourseContent/<courseName>/<id>')
 def addCourseContent(username, courseName, id):
-	articles = getAllObjectsById(models.Articles, id)
+	articles = models.getAllObjectsById(models.Articles, id)
 	print articles
 	flash('Added all articles under {} to your account'.format(courseName))
 	return redirect(url_for('courses.show'))

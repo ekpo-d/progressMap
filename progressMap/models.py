@@ -68,6 +68,7 @@ class Articles(db.Model):
 	description = db.Column(db.Text, nullable=False)
 
 	questions = db.relationship('Questions', backref='article', lazy='dynamic')
+	allContent = db.relationship('AllContent', backref='article', lazy='dynamic')
 
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	course_id = db.Column(db.Integer, db.ForeignKey('courses.id'), nullable=False)
@@ -87,8 +88,7 @@ class Completed(db.Model):
 	
 class AllContent(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
-	title = db.Column(db.String(300), nullable=False)
-	description = db.Column(db.Text, nullable=False)
+	article_id = db.Column(db.Integer, db.ForeignKey('article.id'), nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
