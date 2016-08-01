@@ -20,6 +20,14 @@ def view(page):
 	question = models.getByTitle(models.Questions, page)
 	comments = models.getComments(question)
 	
+	if form.validate_on_submit():
+		message = form.message.data
+		row = models.Comments( message=message, question=question, user=current_user)
+		models.dbCommit(row)
+		
+		flash('Reply added')
+		return render_template('showQuestion.html', question=question, comments=comments)
+	
 	return render_template('showQuestion.html', question=question, comments=comments)
 	
 	
