@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for, redirect
+from flask import render_template, request, url_for, redirect, flash
 from flask_login import current_user, login_required
 from . import user
 from .. import models
@@ -16,5 +16,8 @@ def addedContent(username):
 	return render_template('addedContent.html', user = user)
 
 @login_required
-def addContent(content):
-	print content
+@user.route('/<username>/addedContent/<course>')
+def addCourseContent(username, course):
+	courseId = models.Couse.query.filter_by()
+	flash('Added {} to your account'.format(course))
+	return redirect(url_for('courses.show'))
