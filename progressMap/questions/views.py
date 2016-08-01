@@ -3,19 +3,25 @@ from flask_login import login_required, current_user
 from . import questions, forms
 from .. import models
 
-@questions.route('/', defaults={'page':'all'})
-@questions.route('/<page>')
-def show(page):
-	if page == 'all':
-		allQuestions = models.getFromDb(models.Questions, 6)
-		allComments = models.getFromDb2(models.Comments, 6)
-		return render_template('questions.html', allQuestions=allQuestions, allComments=allComments)
-	elif page ==  models.getByTitle(models.Questions, page).title:
-		question = models.getByTitle(models.Questions, page)
-		comments = models.getComments(question)
-		return render_template('showQuestion.html', question=question, comments=comments)
-	else:
-		abort(404)
+@questions.route('/')
+def show():
+	allQuestions = models.getFromDb(models.Questions, 6)
+	allComments = models.getFromDb2(models.Comments, 6)
+	return render_template('questions.html', allQuestions=allQuestions, allComments=allComments)
+
+@questions.route('/<page>', methods=['GET', 'POST'])
+def view(page):
+	if page == 'ask':
+		return redirect(url_for('questions.ask'))
+	if page == '':
+		return redirect(url_for('questions.show'))
+	
+	form = forms.commentForm()
+	question = models.getByTitle(models.Questions, page)
+	comments = models.getComments(question)
+	
+	return render_template('showQuestion.html', question=question, comments=comments)
+	
 	
 @questions.route('/ask', methods=['GET', 'POST'])
 @login_required

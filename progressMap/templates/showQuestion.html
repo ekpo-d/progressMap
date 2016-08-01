@@ -28,12 +28,19 @@
 </article>
 <br /><br />
 <h4 >{{ question.message }}</h4>
-<br /><br />
+<br />
+</section>
+<section>
+<form>
+	
+	
+</form>
 </section>
 <section class="text-center">
 {% if comments %}
 {% for comment in comments%}
-<article class="underline"><br />
+<article class="underline">
+<br />
 <h4>{{ comment.message}}</h4>
 <p>by 
 	<a href="url_for()">
