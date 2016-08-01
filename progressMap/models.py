@@ -74,7 +74,7 @@ class Articles(db.Model):
 	curriculum_id = db.Column(db.Integer, db.ForeignKey('curriculums.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Article '%s'>".format(self.title)
+		return "<Article '%s'>" %(self.title)
 	
 class Completed(db.Model):
 	id = db.Column(db.Integer, primary_key = True)

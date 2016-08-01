@@ -16,8 +16,9 @@ def addedContent(username):
 	return render_template('addedContent.html', user = user)
 
 @login_required
-@user.route('/<username>/addedContent/<course>')
-def addCourseContent(username, course):
-	courseId = models.Couse.query.filter_by()
-	flash('Added {} to your account'.format(course))
+@user.route('/<username>/addCourseContent/<courseName>/<id>')
+def addCourseContent(username, courseName, id):
+	articles = models.Articles.query.filter_by(course_id = int(id)).all()
+	print articles
+	flash('Added all articles under {} to your account'.format(courseName))
 	return redirect(url_for('courses.show'))

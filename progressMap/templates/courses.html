@@ -25,7 +25,7 @@ COURSES
 			<a href="{{ url_for('courses.show', page=course.title)}}">
 			<button class="button">View</button>
 			</a>
-			<a href="{{ url_for('user.addCourseContent', username=current_user, course=course.title)}}">
+			<a href="{{ url_for('user.addCourseContent', username=current_user, courseName=course.title, id=course.id)}}">
 			<button class="button">Add</button>
 			</a>
 		</article>
