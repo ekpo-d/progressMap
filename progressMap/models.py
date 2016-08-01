@@ -130,6 +130,9 @@ def getComments(questionObject):
 	comments = Comments.query.filter_by(question_id = int(questionObject.id)).all()
 	if comments:
 		return comments
+	
+def getAllObjectsById(classNamw, id):
+	return classNamw.filter_by(course_id = int(id)).all()
 
 def dbCommit(row):
 	db.session.add(row)
