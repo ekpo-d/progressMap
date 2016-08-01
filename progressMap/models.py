@@ -88,8 +88,9 @@ class Completed(db.Model):
 	
 class AllContent(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
-	article_id = db.Column(db.Integer, db.ForeignKey('article.id'), nullable=False)
+	
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	article_id = db.Column(db.Integer, db.ForeignKey('articles.id'), nullable=False)
 	
 	def __repr__(self):
 		return "<All user articles '%s'>".format(self.title)
@@ -131,8 +132,8 @@ def getComments(questionObject):
 	if comments:
 		return comments
 	
-def getAllObjectsById(classNamw, id):
-	return classNamw.filter_by(course_id = int(id)).all()
+def getAllObjectsById(className, id):
+	return className.query.filter_by(course_id = int(id)).all()
 
 def dbCommit(row):
 	db.session.add(row)
