@@ -20,5 +20,5 @@ def addedContent(username):
 def addCourseContent(username, courseName, id):
 	articles = models.getAllObjectsById(models.Articles, id)
 	print articles
-	flash('Added all articles under {} to your account'.format(courseName))
+	flash('Added all articles under \'{}\' to your account'.format(courseName))
 	return redirect(url_for('courses.show'))
