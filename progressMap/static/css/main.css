@@ -22,6 +22,10 @@ a:visited {
 	}
 }
 */
+.replyBox{
+	margin: auto;
+	width: 95%;
+}
 .replyBox textarea {
 	height: 100px;
 }

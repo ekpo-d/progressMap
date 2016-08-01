@@ -10,7 +10,7 @@
 <a class="dropdown-toggle active" data-toggle="dropdown" href="#">QUESTIONS
 <span class="caret"></span></a>
 <ul class="dropdown-menu">
-<li class="text-center"><a href="{{ url_for('questions.show')}}">VIEW</a></li>
+<li class="text-center active"><a href="{{ url_for('questions.show')}}">VIEW</a></li>
 <li class="text-center"><a href="{{ url_for('questions.ask')}}">ASK</a></li>
 </ul>
 </li>
@@ -32,7 +32,7 @@
 <br /><br />
 </section>
 <section>
-<form method="post" action="">
+<form action="" method="post">
 	<h2 class="text-center b-down">Reply</h2>
 	<br />
 	{{ form.hidden_tag() }}
