@@ -25,6 +25,9 @@ COURSES
 			<a href="{{ url_for('courses.show', page=course.title)}}">
 			<button class="button">View</button>
 			</a>
+			<a href="{{ url_for('user.addContent', content=course)}}">
+			<button class="button">Add</button>
+			</a>
 		</article>
 		{% else %}
 		<h4>No course added yet.</h4>

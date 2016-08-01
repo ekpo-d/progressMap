@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, url_for, redirect
 from flask_login import current_user, login_required
 from . import user
 from .. import models
@@ -14,3 +14,7 @@ def userPage(username):
 def addedContent(username):
 	user = current_user
 	return render_template('addedContent.html', user = user)
+
+@login_required
+def addContent(content):
+	print content
