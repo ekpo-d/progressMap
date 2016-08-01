@@ -33,13 +33,20 @@
 </section>
 <section>
 <form>
+	<h2 class="text-center b-down">Reply</h2>
+	<br />
 	{{ form.hidden_tag() }}
-	{{ render_field(form.message, class_="replyBox form-control", placeholder="Reply", required=True) }}
+	<section class="replyBox">
+	{{ render_field(form.message, class_="form-control", placeholder="Message", required=True) }}
 	<br />
 	<button class="button right submit" type="submit">Add</button>
+	<br /><br /><br />
+	</section>
 </form>
 </section>
 <section class="text-center">
+<h2 class="text-center b-down">Replies</h2>
+<br />
 {% if comments %}
 {% for comment in comments%}
 <article class="underline">
