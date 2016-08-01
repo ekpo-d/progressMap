@@ -22,7 +22,9 @@ a:visited {
 	}
 }
 */
-
+textarea.replyBox{
+	height: 100px;
+}
 @media screen and (min-width: 550px){
 .message *{
 	display: inline-block;
@@ -35,6 +37,10 @@ a:visited {
 }
 .message h4:nth-child(2) {
 	width: 20%;
+}
+textarea.replyBox{
+	margin: auto;
+	width: 80%;
 }
 	}
 /* NAVBAR HARMBURGER */

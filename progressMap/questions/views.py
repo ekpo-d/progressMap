@@ -26,9 +26,9 @@ def view(page):
 		models.dbCommit(row)
 		
 		flash('Reply added')
-		return render_template('showQuestion.html', question=question, comments=comments)
+		return render_template('showQuestion.html', question=question, comments=comments, form=form)
 	
-	return render_template('showQuestion.html', question=question, comments=comments)
+	return render_template('showQuestion.html', question=question, comments=comments, form=form)
 	
 	
 @questions.route('/ask', methods=['GET', 'POST'])
