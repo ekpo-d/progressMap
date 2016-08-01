@@ -3,6 +3,11 @@ from flask_login import login_required, current_user
 from . import questions, forms
 from .. import models
 
+@login_required
+def exportCurrentUser():
+	user = current_user
+	return user
+
 @questions.route('/')
 def show():
 	allQuestions = models.getFromDb(models.Questions, 6)
@@ -16,14 +21,17 @@ def view(page):
 	if page == '':
 		return redirect(url_for('questions.show'))
 	
-	form = forms.commentForm()
 	question = models.getByTitle(models.Questions, page)
 	comments = models.getComments(question)
 	
+	form = forms.commentForm()
+	
 	if form.validate_on_submit():
 		message = form.message.data
-		row = models.Comments( message=message, question=question, user=current_user)
+		row = models.Comments( message=message, question=question, user=exportCurrentUser())
 		models.dbCommit(row)
+		
+		comments = models.getComments(question)
 		
 		flash('Reply added')
 		return render_template('showQuestion.html', question=question, comments=comments, form=form)
