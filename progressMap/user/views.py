@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from . import user
 from .. import models
 
+
 @login_required
 @user.route('/<username>')
 def userPage(username):
@@ -22,5 +23,6 @@ def addCourseContent(username, courseName, id):
 	for article in articles:
 		row = models.AllContent(user=current_user, article=article)
 		models.dbCommit(row)
+	#print request.path
 	flash('Added all articles under \'{}\' to your account'.format(courseName))
 	return redirect(url_for('courses.show'))

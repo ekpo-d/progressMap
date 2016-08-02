@@ -14,6 +14,10 @@
 <h1 class="b-down">{{ course.title.capitalize() }}</h1>
 <br />
 <h4>{{ course.description }}</h4>
+<br />
+<a href="{{ url_for('user.addCourseContent', username=current_user, courseName=course.title, id=course.id, template = 'showCourse.html')}}">
+	<button class="button">Add</button>
+</a>
 </section>
 <br /><br />
 
