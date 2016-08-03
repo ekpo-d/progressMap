@@ -1,0 +1,9 @@
+{% macro calcReplies(allComments, questionId) %}
+{% set replyList = [] %}
+{% for comment in allComments%}
+{% if comment.question.id == questionId %}
+{% replyList.append(questionId) %}
+{% endif %}
+{% endfor %}
+<h4>{{ replyList | length }} Replies</h4>
+{% endmacro %}
