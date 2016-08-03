@@ -16,13 +16,12 @@ def addedContent(username):
 	user = current_user
 	return render_template('addedContent.html', user = user)
 
-@user.route('/<username>/addCourseContent/<courseName>/<id>')
+@user.route('/<username>/addCourseContent/<courseName>/<id><endpointArg>')
 @login_required
-def addCourseContent(username, courseName, id):
+def addCourseContent(username, courseName, id, endpointArg):
 	articles = models.getAllObjectsById(models.Articles, id)
 	for article in articles:
 		row = models.AllContent(user=current_user, article=article)
 		models.dbCommit(row)
-	#print request.path
 	flash('Added all articles under \'{}\' to your account'.format(courseName))
 	return redirect(url_for('courses.show'))
