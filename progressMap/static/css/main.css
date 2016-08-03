@@ -22,9 +22,6 @@ a:visited {
 	}
 }
 */
-.tile article{
-	display: inline-block;
-}
 .replyBox{
 	margin: auto;
 	width: 95%;
