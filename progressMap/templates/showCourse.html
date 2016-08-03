@@ -15,7 +15,7 @@
 <br />
 <h4>{{ course.description }}</h4>
 <br />
-<a href="{{ url_for('user.addCourseContent', username=current_user, courseName=course.title, id=course.id, template = 'showCourse.html')}}">
+<a href="{{ url_for('user.addCourseContent', username=current_user, courseName=course.title, id=course.id, endPoint='courses', path=course.title)}}">
 	<button class="button">Add</button>
 </a>
 </section>
