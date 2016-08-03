@@ -2,7 +2,8 @@
 {% set replyList = [] %}
 {% for comment in allComments%}
 {% if comment.question.id == questionId %}
-{% replyList.append(questionId) %}
+{% if replyList.append(questionId) %}
+{% endif %}
 {% endif %}
 {% endfor %}
 <h4>{{ replyList | length }} Replies</h4>
