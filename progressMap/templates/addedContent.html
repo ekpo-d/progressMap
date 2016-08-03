@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}{{username}}{% endblock %}
+
+{% block user_link %}
+{% if current_user.is_authenticated %}
+<li class="dropdown">
+<a class="dropdown-toggle active" data-toggle="dropdown" href="#">{{current_user.username}}
+<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="text-center">
+	<a href="{{ url_for('user.userPage', username=current_user.username) }}">PROGRESS</a>
+</li>
+<li class="text-center active">
+	<a href="{{ url_for('user.addedContent', username=current_user.username)}}">CONTENT</a>
+</li>
+<li class="text-center"><a href="{{ url_for('add.main')}}">ADD CONTENT</a></li>
+<li class="text-center"><a href="{{ url_for('main.show', page='signout')}}">SIGN OUT</a></li>
+</ul>
+</li>
+{% else %}
+<li><a href="{{ url_for('main.show', page='login') }}">LOGIN</a>
+</li>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid content">
+<h3 class="b-down text-center">ARTICLES</h3>
+	{% for article in user.articles%}
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">{{article.title}}</h2>
+			<h4 class="desc">
+				{{article.description}}
+			</h4>
+			<p class="date underline">
+				<a>{{ article.course.title }} course </a> in 
+				<a>{{ article.curriculum.title }} curriculum</a>
+			</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	{% else %}
+	<h4 class="text-center">No article has been added yet.</h4>
+	{% endfor %}
+</section>
+<br />
+<section class="container-fluid content">
+<h3 class="b-down text-center">COURSES</h3>
+	{% for course in user.courses%}
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">{{course.title}}</h2>
+			<h4 class="desc">
+				{{course.description}}
+			</h4>
+			<p class="date underline">
+				<a>{{ course.curriculum.title }} curriculum</a>
+			</p>
+			<button class="button">View</button>
+		</article>
+	</section>
+	{% else %}
+	<h4 class="text-center">No course has been added yet.</h4>
+	{% endfor %}
+</section>
+<br />
+<section class="container-fluid content">
+<h3 class="b-down text-center">CURRICULUMS</h3>
+	{% for curriculum in user.curriculums%}
+	<section class="text-center tile">
+		<article class="title">
+			<br /><br /><br />
+			<h2 style="margin-top: 0px;">{{curriculum.title}}</h2>
+			<h4 class="desc">
+				{{curriculum.description}}
+			</h4>
+			<button class="button">View</button>
+		</article>
+	</section>
+	{% else %}
+	<h4 class="text-center">No curriculum has been added yet.</h4>
+	{% endfor %}
+</section>
+{% endblock %}

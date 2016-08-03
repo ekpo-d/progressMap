@@ -17,28 +17,26 @@
 {% endblock %}
 
 {% block desc %}
+{% endblock %}
+
+{% block loginForm %}
 <form action="" method="post">
 {{ form.hidden_tag() }}
 <br />
 {{ render_field(form.username, class_="form-control", placeholder="Username", required=True) }}
-<br />
-{{ render_field(form.email, class_="form-control", placeholder="Email", required=True) }}
-<br />
+<br /><br />
 {{ render_field(form.password, class_="form-control", placeholder="Password", required=True) }}
 <br />
-{{ render_field(form.confirmPassword, class_="form-control", placeholder="Confirm password", required=True) }}
-<br />
-
+{{ render_field(form.remember_me) }}Keep me logged in 
+<br /><br />
 {% endblock %}
-{% block signup %}
-<button class='btn' type="submit">SIGN UP</button>
+{% block login%}
+<a href="{{ url_for('main.show', page='login') }}"><button class='btn' type="submit">LOG IN</button></a>
+<br /><br />
+<br /><br />
+{% endblock %}
 </form>
-{% endblock %}
-
-{% block loginForm %}
-{% endblock %}
-
-{% block login %}
+{% block signup %}
 {% endblock %}
 {% block explore %}
 {% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% from 'form_macros.html' import render_field %}
+
+{% block title %}
+{{ question.title.upper() }} - QUESTION
+{% endblock %}
+
+{% block questions_link %}
+<li class="dropdown">
+<a class="dropdown-toggle active" data-toggle="dropdown" href="#">QUESTIONS
+<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li class="text-center active"><a href="{{ url_for('questions.show')}}">VIEW</a></li>
+<li class="text-center"><a href="{{ url_for('questions.ask')}}">ASK</a></li>
+</ul>
+</li>
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid content text-center underline">
+<article class="b-down">
+<h1>{{ question.title.capitalize() }}</h1>
+<br />
+<p>
+	<a href="{{ url_for('articles.show', page = question.article.title) }}">
+		{{ question.article.title.capitalize() }}
+	</a>
+</p>
+</article>
+<br /><br />
+<h4 >{{ question.message }}</h4>
+<br /><br />
+</section>
+<section>
+<form action="" method="post">
+	<h2 class="text-center b-down">Reply</h2>
+	<br />
+	{{ form.hidden_tag() }}
+	<section class="replyBox">
+	{{ render_field(form.message, class_="form-control", placeholder="Message", required=True) }}
+	<br />
+	<button class="button right submit" type="submit">Add</button>
+	<br /><br /><br />
+	</section>
+</form>
+</section>
+<section class="text-center">
+<h2 class="text-center b-down">Replies</h2>
+<br />
+{% if comments %}
+{% for comment in comments%}
+<article class="underline">
+<br />
+<h4>{{ comment.message}}</h4>
+<p>by 
+	<a href="url_for()">
+		{{ comment.user.username}}
+	</a>
+</p>
+{% endfor %}
+</article>
+
+{% else %}
+<h4>No replies yet.</p>
+{% endif %}
+</section>
+{% endblock %}

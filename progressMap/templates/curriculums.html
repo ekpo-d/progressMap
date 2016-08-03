@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+CURRICULUM
+{% endblock %}
+
+{% block curriculums_link %}
+<li><a class="active" href="{{ url_for('curriculums.show')}}">CURRICULUMS</a></li>
+{% endblock %}
+
+{% block content %}
+{% if curriculumList %}
+
+<section class="container-fluid content">
+	{% for curriculum in curriculumList %}
+	<section class="text-center tile">
+	<a href="{{ url_for('curriculums.show', page=curriculum.title) }}">
+	<article class="title {{curriculum.title}}">
+		<br /><br /><br /><br /><br />
+		<h2 style="margin-top: 0px;" class="curriculumH">{{curriculum.title}}</h2>
+	</article>
+	</a>
+	{% else %}
+		<h4>No curriculum added yet.</h4>
+</section>
+	{% endfor %}
+</section>
+{% endif %}
+{% endblock %}
+
