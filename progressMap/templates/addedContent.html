@@ -29,7 +29,7 @@
 <h3 class="b-down text-center">QUESTIONS ASKED</h3>
 	{% for question in user.questions%}
 	<section class="text-center tile">
-		<article class="title">
+		<article class="title {{question.article.curriculum.title}}">
 			<br /><br /><br />
 			<h2 style="margin-top: 0px;">{{question.title.capitalize() }}</h2>
 			<h4 class="desc">
@@ -50,17 +50,18 @@
 <h3 class="b-down text-center">ARTICLES</h3>
 	{% for article in user.articles%}
 	<section class="text-center tile">
-		<article class="title">
+		<article class="title {{article.curriculum.title}}">
 			<br /><br /><br />
-			<h2 style="margin-top: 0px;">{{article.title}}</h2>
+			<h2 style="margin-top: 0px;">{{article.title.capitalize()}}</h2>
 			<h4 class="desc">
-				{{article.description}}
+				{{article.description.capitalize()}}
 			</h4>
 			<p class="date underline">
-				<a>{{ article.course.title }} course </a> in 
-				<a>{{ article.curriculum.title }} curriculum</a>
+				<a>{{ article.course.title.upper() }} </a> - <a>{{ article.curriculum.title.upper() }}</a>
 			</p>
+			<a href="{{ url_for('articles.show', page=article.title)}}">
 			<button class="button">View</button>
+			</a>
 		</article>
 	</section>
 	{% else %}
@@ -72,16 +73,18 @@
 <h3 class="b-down text-center">COURSES</h3>
 	{% for course in user.courses%}
 	<section class="text-center tile">
-		<article class="title">
+		<article class="title {{course.curriculum.title}}">
 			<br /><br /><br />
-			<h2 style="margin-top: 0px;">{{course.title}}</h2>
+			<h2 style="margin-top: 0px;">{{course.title.capitalize()}}</h2>
 			<h4 class="desc">
-				{{course.description}}
+				{{course.description.capitalize()}}
 			</h4>
 			<p class="date underline">
-				<a>{{ course.curriculum.title }} curriculum</a>
+				In <a>{{ course.curriculum.title.upper() }}</a>
 			</p>
+			<a href="{{ url_for('courses.show', page=course.title)}}">
 			<button class="button">View</button>
+			</a>
 		</article>
 	</section>
 	{% else %}
@@ -93,14 +96,14 @@
 <h3 class="b-down text-center">CURRICULUMS</h3>
 	{% for curriculum in user.curriculums%}
 	<section class="text-center tile">
-		<article class="title">
-			<br /><br /><br />
-			<h2 style="margin-top: 0px;">{{curriculum.title}}</h2>
-			<h4 class="desc">
-				{{curriculum.description}}
-			</h4>
+		<a href="{{ url_for('curriculums.show', page=curriculum.title) }}">
+		<article class="title {{curriculum.title}}">
+			<br /><br /><br /><br /><br />
+			<h2 style="margin-top: 0px;">{{curriculum.title.upper()}}</h2>
+			
 			<button class="button">View</button>
 		</article>
+		</a>
 	</section>
 	{% else %}
 	<h4 class="text-center">No curriculum has been added yet.</h4>
