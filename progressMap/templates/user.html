@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}{{username}}{% endblock %}
+{% block title %}{{ current_user.username }}{% endblock %}
 
 {% block user_link %}
 {% if current_user.is_authenticated %}
