@@ -6,5 +6,11 @@
 {% endif %}
 {% endif %}
 {% endfor %}
+{% with replyNum = replyList | length %}
+{% if replyNum == 1 %}
+<h4>{{ replyList | length }} Reply</h4>
+{% else %}
 <h4>{{ replyList | length }} Replies</h4>
+{% endif %}
+{% endwith %}
 {% endmacro %}
