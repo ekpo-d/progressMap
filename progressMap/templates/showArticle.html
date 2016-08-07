@@ -11,7 +11,10 @@
 {% block content %}
 <section class="container-fluid content text-center">
 <h1 class="b-down">{{ article.title.capitalize() }}</h1>
-<br />
+<a href="{{ url_for('user.addArticleContent', username=current_user, articleName=article.title, id=article.id, endPoint='articles', path=article.title)}}">
+<button class="button">Add</button>
+</a>
+<br /><br />
 <h4 >{{ article.description }}</h4>
 <br /><br />
 </section>

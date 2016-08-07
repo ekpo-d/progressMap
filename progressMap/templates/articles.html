@@ -33,6 +33,9 @@ ARTICLES
 			<a href="{{ url_for('articles.show', page=article.title)}}">
 			<button class="button">View</button>
 			</a>
+			<a href="{{ url_for('user.addArticleContent', username=current_user, articleName=article.title, id=article.id, endPoint='articles', path='return')}}">
+			<button class="button">Add</button>
+			</a>
 		</article>
 	</section>
 	{% else %}
