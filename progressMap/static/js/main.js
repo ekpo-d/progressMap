@@ -8,3 +8,9 @@ curriculum = $('.curriculumH')
 curriculum.map(function(element){
 	curriculum[element].textContent = curriculum[element].textContent.toUpperCase()
 })
+
+//completed checkbox
+var completed = $('.completed')
+completed.map(function(elt){
+	(completed[elt].parentNode.firstChild).css()
+})
