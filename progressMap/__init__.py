@@ -26,6 +26,7 @@ from .courses import courses as courses_blueprint
 from .curriculums import curriculums as curriculums_blueprint
 from .questions import questions as questions_blueprint
 from .user import user as user_blueprint
+
 import models
 
 app.register_blueprint(main_blueprint)
