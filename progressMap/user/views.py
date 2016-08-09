@@ -8,7 +8,9 @@ from .. import models
 @user.route('/<username>')
 def userPage(username):
 	user = current_user
-	return render_template('user.html', user = user)
+	usersContent = []
+	allContent = models.getAllObjectsById2(models.AllContent, int(user.id))
+	return render_template('user.html', user = user, allContent=allContent)
 
 @login_required
 @user.route('/<username>/content')

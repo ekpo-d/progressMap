@@ -69,6 +69,17 @@
 	<p>Completed</p>
 	</article>
 </section>
+{% for content in allContent %}
+	<section class="row">
+	<article class="col-xs-10">
+		<p>{{content.article.title}}</p>
+	</article>
+	<article class="col-xs-2">
+	<input type="checkbox" class="complete" style="height: 15px; width: 15px">
+	</article>
+	</section>
+	<br />
+{% endfor%}
 </section>
 <br /><br />
 {% endblock %}

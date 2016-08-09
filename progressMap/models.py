@@ -135,6 +135,9 @@ def getComments(questionObject):
 def getAllObjectsById(className, id):
 	return className.query.filter_by(course_id = int(id)).all()
 
+def getAllObjectsById2(className, id):
+	return className.query.filter_by(user_id = id).all()
+
 def dbCommit(row):
 	db.session.add(row)
 	db.session.commit()
