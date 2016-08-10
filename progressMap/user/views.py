@@ -32,7 +32,7 @@ def addCourseContent(username, courseName, id, endPoint, path):
 	flash('Added all articles under \'{}\' to your account'.format(courseName))
 	return redirect(endPoint)
 
-@user.route('/<username>/addCourseContent/<articleName>/<id>/<endPoint>/<path>')
+@user.route('/<username>/addArticleContent/<articleName>/<id>/<endPoint>/<path>')
 @login_required
 def addArticleContent(username, articleName, id, endPoint, path):
 	if path == 'return':
