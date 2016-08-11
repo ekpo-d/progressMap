@@ -12,7 +12,11 @@ curriculum.map(function(element){
 //completed checkbox
 var completed = $('.completed')
 completed.map(function(elt){
-	var eltNode = (completed[elt].previousSibling)
-	console.log(eltNode)
-	eltNode.css('text-decoration', 'line-through')
+	completed[elt].addEventListener('input', function(e){
+		if (e.target.checked){
+			console.log('yes')
+		completed[elt].parentElement.parentElement.children[0]
+		eltNode.style.textDecoration = 'line-through'
+		}
+})
 })
