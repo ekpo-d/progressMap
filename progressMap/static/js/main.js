@@ -10,13 +10,41 @@ curriculum.map(function(element){
 })
 
 //completed checkbox
-var completed = $('.completed')
-completed.map(function(elt){
-	completed[elt].addEventListener('input', function(e){
+/*
+completed[elt].addEventListener('input', function(e){
+		console.log(e.target.checked)
 		if (e.target.checked){
 			console.log('yes')
 		completed[elt].parentElement.parentElement.children[0]
 		eltNode.style.textDecoration = 'line-through'
 		}
 })
+*/
+function lineThrough(elt, value){
+	elt.parentElement.parentElement.firstElementChild.style.textDecoration =  value
+}
+
+var completed = $('.completed')
+completed.map(function(elt){
+	completed[elt].addEventListener('change', function(e){
+		if (e.target.checked){
+			lineThrough(e.target, 'line-through')
+		}else{
+			lineThrough(e.target, '')
+		}
+	})
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
