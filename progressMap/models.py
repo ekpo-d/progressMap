@@ -93,7 +93,7 @@ class AllContent(db.Model):
 	article_id = db.Column(db.Integer, db.ForeignKey('articles.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<All user articles '%s'>".format(self.title)
+		return "<Article id '%s'>" %(self.article_id)
 	
 class Questions(db.Model):
 	id= db.Column(db.Integer, primary_key = True)

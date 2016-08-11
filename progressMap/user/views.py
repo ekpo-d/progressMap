@@ -47,17 +47,9 @@ def addArticleContent(username, articleName, id, endPoint, path):
 		endPoint = '/' + endPoint + '/' + path
 	article = models.getByTitle(models.Articles, articleName)
 	userContent = models.AllContent.query.filter_by(article_id = int(id)).all()
-	if userContent:
-		for content in userContent:
-			print content
-			if article.id != content.id:
-				row = models.AllContent(user=current_user, article=article)
-				models.dbCommit(row)
-				flash('Added article \'{}\' to your account'.format(articleName))
-				return redirect(endPoint)
-			else:
-				flash('This content has already been added')
-				return redirect(endPoint)
+	if article in userContent:
+		flash('This content has already been added')
+		return redirect(endPoint)
 	else:
 		row = models.AllContent(user=current_user, article=article)
 		models.dbCommit(row)
