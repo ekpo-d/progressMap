@@ -26,11 +26,17 @@ def addCourseContent(username, courseName, id, endPoint, path):
 	else:
 		endPoint = '/' + endPoint + '/' + path
 	articles = models.getAllObjectsById(models.Articles, id)
+	userContent = models.AllContent.query.filter_by(article_id = int(id)).all()
 	for article in articles:
-		row = models.AllContent(user=current_user, article=article)
-		models.dbCommit(row)
-	flash('Added all articles under \'{}\' to your account'.format(courseName))
-	return redirect(endPoint)
+		for content in userContent:
+			if article.id != content.id:
+				row = models.AllContent(user=current_user, article=article)
+				models.dbCommit(row)
+				flash('Added all articles under \'{}\' to your account'.format(courseName))
+				return redirect(endPoint)
+			else:
+				flash('This content has already been added')
+				return redirect(endPoint)
 
 @user.route('/<username>/addArticleContent/<articleName>/<id>/<endPoint>/<path>')
 @login_required
@@ -40,7 +46,14 @@ def addArticleContent(username, articleName, id, endPoint, path):
 	else:
 		endPoint = '/' + endPoint + '/' + path
 	article = models.getByTitle(models.Articles, articleName)
-	row = models.AllContent(user=current_user, article=article)
-	models.dbCommit(row)
-	flash('Added article \'{}\' to your account'.format(articleName))
-	return redirect(endPoint)
+	userContent = models.AllContent.query.filter_by(article_id = int(id)).all()
+	print userContent
+	for content in userContent:
+		if article.id != content.id:
+			row = models.AllContent(user=current_user, article=article)
+			models.dbCommit(row)
+			flash('Added article \'{}\' to your account'.format(articleName))
+			return redirect(endPoint)
+		else:
+			flash('This content has already been added')
+			return redirect(endPoint)
