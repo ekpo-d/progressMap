@@ -84,7 +84,7 @@ class Completed(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	
 	def __repr__(self):
-		return "<Completed '%s'>".format(self.title)
+		return "<Completed '%s'>" %(self.title)
 	
 class AllContent(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
