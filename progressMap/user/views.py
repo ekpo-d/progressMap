@@ -29,14 +29,13 @@ def addCourseContent(username, courseName, id, endPoint, path):
 	userContent = models.AllContent.query.filter_by(article_id = int(id)).all()
 	for article in articles:
 		for content in userContent:
-			if article.id != content.id:
+			if not models.AllContent.query.filter_by(article_id = article.id).first():
 				row = models.AllContent(user=current_user, article=article)
 				models.dbCommit(row)
 				flash('Added all articles under \'{}\' to your account'.format(courseName))
 				return redirect(endPoint)
-			else:
-				flash('This content has already been added')
-				return redirect(endPoint)
+	flash('All content under \'{}\' have been added already'.format(courseName))
+	return redirect(endPoint)
 
 @user.route('/<username>/addArticleContent/<articleName>/<id>/<endPoint>/<path>')
 @login_required
