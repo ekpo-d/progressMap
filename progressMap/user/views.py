@@ -46,8 +46,7 @@ def addArticleContent(username, articleName, id, endPoint, path):
 	else:
 		endPoint = '/' + endPoint + '/' + path
 	article = models.getByTitle(models.Articles, articleName)
-	userContent = models.AllContent.query.filter_by(article_id = int(id)).all()
-	if article in userContent:
+	if models.AllContent.query.filter_by(article_id = article.id).first():
 		flash('This content has already been added')
 		return redirect(endPoint)
 	else:
