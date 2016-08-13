@@ -14,26 +14,26 @@ ARTICLES
 <section class="container-fluid content">
 	{% for article in articlesList %}
 	<section class="text-center tile">
-		<article class="title underline {{article.curriculum.title}}">
+		<article class="title {{article.curriculum.title}}">
 			<br /><br />
 			<h2 style="margin-top: 0px;">{{ article.title.capitalize() }}</h2>
 			<h4 class="desc">
 				{{ article.description }}
 			</h4>
-			<p>
+			<p class="underline">
 				<a href="{{ url_for('courses.show', page=article.course.title)}}">{{ article.course.title.upper() }}</a> -
 				<a href="{{ url_for('curriculums.show', page=article.curriculum.title)}}">{{ article.curriculum.title.upper() }}
 				</a>
 			</p>
-			<p>Added by 
+			<p class="underline">Added by 
 				<a href="{{ url_for('user.userPage', username=article.user.username)}}">
 					{{ article.user.username }}
 				</a>
 			</p>
-			<a href="{{ url_for('articles.show', page=article.title)}}">
+			<a class="linkButton" href="{{ url_for('articles.show', page=article.title)}}">
 			<button class="button">View</button>
 			</a>
-			<a href="{{ url_for('user.addArticleContent', username=current_user, articleName=article.title, id=article.id, endPoint='articles', path='return')}}">
+			<a class="linkButton" href="{{ url_for('user.addArticleContent', username=current_user, articleName=article.title, id=article.id, endPoint='articles', path='return')}}">
 			<button class="button">Add</button>
 			</a>
 		</article>
