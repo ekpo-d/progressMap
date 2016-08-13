@@ -30,8 +30,11 @@
 				<a href="{{ url_for('courses.show', page=article.course.title)}}">{{ article.course.title.upper() }}</a> -
 				<a href="{{ url_for('curriculums.show', page=article.curriculum.title)}}">{{ article.curriculum.title.upper() }}</a>
 			</p>
-			<a href="{{ url_for('articles.show', page=article.title)}}">
+			<a class="linkButton" href="{{ url_for('articles.show', page=article.title)}}">
 			<button class="button">View</button>
+			</a>
+			<a class="linkButton" href="{{ url_for('user.addArticleContent', username=current_user, articleName=article.title, id=article.id, endPoint='curriculums', path=article.curriculum.title)}}">
+				<button class="button">Add</button>
 			</a>
 		</article>
 	</section>
@@ -54,10 +57,10 @@
 			<p class="date underline">
 				In <a href="{{ url_for('curriculums.show', page=course.curriculum.title)}}">{{ course.curriculum.title.upper() }}</a>
 			</p>
-			<a href="{{ url_for('courses.show', page=course.title)}}">
+			<a class="linkButton" href="{{ url_for('courses.show', page=course.title)}}">
 			<button class="button">View</button>
 			</a>
-			<a href="#">
+			<a class="linkButton" href="#">
 				<button class="button">Add</button>
 			</a>
 		</article>
