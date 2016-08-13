@@ -27,7 +27,7 @@ def addCourseContent(username, courseName, id, endPoint, path):
 		endPoint = '/' + endPoint + '/' + path
 	articles = models.getAllObjectsById(models.Articles, id)
 	userContent = models.AllContent.query.filter_by(user_id = int(current_user.id)).all()
-	newContent= []
+
 	for article in articles:
 		for content in userContent:
 			if content.article_id == article.id:
@@ -35,9 +35,6 @@ def addCourseContent(username, courseName, id, endPoint, path):
 		else:
 			row = models.AllContent(user=current_user, article=article)
 			models.dbCommit(row)
-			newContent.append(article)
-	
-	print newContent
 	
 	flash('Added all articles under \'{}\' to your account'.format(courseName))
 	return redirect(endPoint)
