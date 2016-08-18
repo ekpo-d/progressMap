@@ -1,18 +1,16 @@
-from os import path
+import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_debugtoolbar import DebugToolbarExtension
 from flask_login import LoginManager
 
 
-basedir = path.abspath(path.dirname(__file__))
-
 app = Flask(__name__)
-app.config['DEBUG'] = True
-app.config['SECRET_KEY'] = '\xcbP\x08\xf1\x9c\xe8\x9fq\x19\xf7\xf9\xb4\x05\xe3\xbc\x98A\x04\x9fw\xfa\t\x1cN'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + path.join(basedir, 'models.db')
+
+app.config.from_object(os.getenv('FLASK_CONFIGURATION', 'progressMap.settings.DevelopmentConfig'))
 db = SQLAlchemy(app)
+toolbar = DebugToolbarExtension(app)
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -36,3 +34,4 @@ app.register_blueprint(courses_blueprint, url_prefix='/courses')
 app.register_blueprint(curriculums_blueprint, url_prefix='/curriculums')
 app.register_blueprint(questions_blueprint, url_prefix='/questions')
 app.register_blueprint(user_blueprint, url_prefix='/user')
+
