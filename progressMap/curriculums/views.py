@@ -3,8 +3,6 @@ from . import curriculums
 from .. import models
 
 
-
-
 @curriculums.route('/', defaults={'page': 'all'})
 @curriculums.route('/<page>')
 def show(page):
