@@ -8,7 +8,6 @@ from . import main, forms
 def load_user(userid):
     return models.User.query.get(int(userid))
 
-
 def login_function():
     form = forms.LoginForm()
     if form.validate_on_submit():
